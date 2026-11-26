@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<script>try{if(JSON.parse(localStorage.getItem("dartsapp.theme"))==="villa")document.documentElement.dataset.theme="villa"}catch(e){}</script>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="apple-mobile-web-app-capable" content="yes">
+<link rel="manifest" href="manifest.webmanifest">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="Darts App">
@@ -15,11 +15,11 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Zilla+Slab:wght@500;600;700&display=swap" rel="stylesheet">
+<script>try{if(JSON.parse(localStorage.getItem("dartsapp.theme"))==="villa")document.documentElement.dataset.theme="villa"}catch(e){}</script>
 <style>
 :root{--red:#003798;--red2:#002A75;--red3:#001E55;--gold:#FFFFFF;--goldl:#A8C1FF;--goldd:#7F9BD6;--black:#00163D;--char:#08214F;--char2:#0E2C63;--cream:#FFFFFF;--cream2:#E6EDFA;--ink:#00163D;--mute:#5F79A8;--rule:#C9D6EE;--sub1:#A9BBDD;--sub2:#93A7CC;--sub3:#BFCDE8;--olin:#0000FF;--dbl:#C2D3FF;--treb:#8FB0FF;--gold-rgb:255,255,255;--black-rgb:0,22,61;--goldl-rgb:168,193,255}
 html[data-theme="villa"]{--red:#670E36;--red2:#510B2B;--red3:#3B0820;--gold:#95BFE5;--goldl:#FEE505;--goldd:#6F98C0;--black:#24061A;--char:#330A24;--char2:#430E2F;--cream:#FFFFFF;--cream2:#F3E9EE;--ink:#24061A;--mute:#8A5F76;--rule:#E3CFD9;--sub1:#CDB0BF;--sub2:#B894A7;--sub3:#DCC4D0;--olin:#FEE505;--dbl:#95BFE5;--treb:#FEE505;--gold-rgb:149,191,229;--black-rgb:36,6,26;--goldl-rgb:254,229,5}
-
-:root{--_orig:1;
+:root{
   --fd:"Alfa Slab One",Rockwell,"American Typewriter",Georgia,serif;
   --ft:"Zilla Slab",Rockwell,"American Typewriter",Georgia,serif;
 }
@@ -113,6 +113,59 @@ select{appearance:none;-webkit-appearance:none;background:#fff url("data:image/s
 .addp{width:100%;padding:10px;border:2px dashed var(--goldd);border-radius:10px;font-size:18px;color:var(--goldd)}
 .cta{width:100%;background:var(--gold);color:var(--ink);font-family:var(--fd);font-weight:400;font-size:32px;padding:12px 10px 14px;border-radius:14px;margin-top:4px;border:3px solid var(--black);box-shadow:0 5px 0 var(--black);text-transform:uppercase}
 .cta:active{transform:translateY(4px);box-shadow:0 1px 0 var(--black)}
+/* ======= TV SCOREBOARD (opened with ?tv=1) ======= */
+.tvopen{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;margin:10px 0 0;padding:10px;border-radius:12px;background:var(--gold);color:var(--ink);border:2px solid var(--black);font-size:18px;font-weight:700;text-transform:uppercase;letter-spacing:.04em}
+.tvopen svg{width:24px;height:24px}
+html.tvm,html.tvm body{background:var(--black);overflow:hidden;height:100%}
+html.tvm body>*:not(#tv):not(script){display:none!important}
+#tv{position:fixed;inset:0;background:var(--black);overflow:hidden;cursor:none}
+#tv.mouse{cursor:auto}
+#tvStage{position:absolute;left:50%;top:50%;width:1000px;transform:translate(-50%,-50%);transform-origin:center;background:var(--black);border:4px solid var(--gold);border-radius:18px;overflow:hidden}
+#tv.idle #tvStage{display:none}
+#tvStage.wide{width:1280px}
+.tvhead{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:12px 22px;background:var(--black);border-bottom:4px solid var(--gold)}
+.tvbrand{display:flex;align-items:center;gap:12px;font-size:40px;white-space:nowrap}.tvbrand svg{width:48px;height:48px}
+.tvtitle{font-size:52px;line-height:1;white-space:nowrap;text-align:right;min-width:0;overflow:hidden}
+.tvtitle small{display:block;font-family:var(--ft);font-size:20px;color:var(--gold);text-shadow:none;letter-spacing:.08em;font-weight:700;margin-top:4px}
+#tv .board{overflow:visible;flex-wrap:wrap;max-height:none}
+#tv .board:not(.kboard):not(.crboard) .pn{flex:0 0 calc(100% / var(--cols,2));min-width:0;border-bottom:3px solid var(--black)}
+#tv .pmain{min-height:250px;padding:24px 24px 16px;gap:14px}
+#tv .prem{font-size:180px}#tv .plast{font-size:32px;gap:10px}#tv .plast .box{min-width:76px;border-width:3px;padding:3px 10px}
+#tv .pname{font-size:44px}#tv .pppr{font-size:28px;padding:5px 0 4px}
+#tv .pn.on::before{border-width:18px;border-top-width:18px}
+#tv .board.many .pmain{min-height:200px}#tv .board.many .prem{font-size:130px}#tv .board.many .pname{font-size:34px}#tv .board.many .plast{font-size:26px}
+#tv .board.c4 .prem{font-size:100px}#tv .board.c4 .pmain{flex-direction:column-reverse;align-items:center}#tv .board.c4 .pinfo{align-items:center;text-align:center}
+#tv .kboard{grid-template-columns:repeat(var(--cols,2),1fr);gap:8px;padding:8px}
+#tv .kcard{padding:18px;gap:18px;border-radius:16px;border-width:3px}
+#tv .knum{width:120px;height:120px;font-size:64px;border-width:4px}
+#tv .kname{font-size:40px}#tv .klives{font-size:34px}#tv .asub{font-size:26px}#tv .aprog{height:18px;border-radius:9px}
+#tv .kpts i{width:22px;height:22px}#tv .kbadge,#tv .kout{font-size:26px;padding:2px 10px}
+#tv .kmany .kcard{padding:12px}#tv .kmany .knum{width:90px;height:90px;font-size:46px}#tv .kmany .kname{font-size:30px}
+#tv .crboard{max-height:none;padding:6px}
+#tv .crt{border-spacing:4px}#tv .crt th{font-size:32px;padding:8px 4px;border-radius:10px}
+#tv .crt td{height:54px;font-size:44px;border-radius:10px}#tv .crt td.crn,#tv .crt tr.crpts td:first-child{width:100px}
+#tv .crt tr.crpts td{font-size:40px}#tv .crt.many th{font-size:24px}#tv .crt.many td{font-size:34px}
+#tv .strip{min-height:130px;padding:16px 24px 44px;border-bottom:none}
+#tv .dslot{height:100px;max-width:280px;font-size:60px;border-radius:16px;border-width:3px}
+#tv .dslot svg{height:46px}#tv .dslot .tag{font-size:20px;top:-14px;padding:2px 8px}
+#tv .dslot.aim{font-size:48px;border-width:3px}
+#tv .stripcap{font-size:22px;bottom:10px}
+#tv .nextco{font-size:32px;padding:10px 14px;border-width:3px;margin-top:12px}
+#tv .kassign{font-size:32px}
+#tvIdle{position:absolute;inset:0;display:none;flex-direction:column;align-items:center;justify-content:center;gap:2vh;color:var(--cream);text-align:center;padding:4vw}
+#tv.idle #tvIdle{display:flex}
+#tvIdle svg{width:18vh;height:18vh}#tvIdle b{font-size:12vh;line-height:1}#tvIdle span{font-size:4vh;color:var(--gold);text-transform:uppercase;letter-spacing:.1em;font-weight:700}#tvIdle small{font-size:3vh;opacity:.75}
+#tvWin{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);background:var(--red);border:6px solid var(--gold);border-radius:3vh;padding:4vh 8vh;text-align:center;box-shadow:0 0 0 100vmax rgba(0,0,0,.55);animation:tvpop .4s ease-out}
+#tvWin small{display:block;font-size:4vh;color:var(--goldl);text-transform:uppercase;letter-spacing:.14em;font-weight:700}#tvWin b{display:block;font-size:14vh;line-height:1.05;text-transform:uppercase;white-space:nowrap}
+#tvCall{position:absolute;left:50%;top:3vh;transform:translateX(-50%);max-width:90vw;background:var(--black);color:var(--gold);border:5px solid var(--gold);border-radius:2.4vh;padding:2vh 5vh;font-size:7vh;font-family:var(--fd);text-transform:uppercase;text-align:center;line-height:1.05;box-shadow:0 1vh 4vh rgba(0,0,0,.6);animation:tvpop .25s ease-out}
+#tvCall.big{background:var(--red);color:var(--cream);font-size:9vh;max-width:80vw;bottom:auto;top:50%;transform:translate(-50%,-50%)}
+@keyframes tvpop{from{opacity:0;scale:.85}to{opacity:1;scale:1}}
+#tvFull{position:absolute;right:2vh;top:2vh;background:var(--char);color:var(--gold);border:2px solid var(--gold);border-radius:10px;padding:8px 14px;font-size:16px;opacity:0;transition:opacity .3s}
+#tv.mouse #tvFull,#tv.idle #tvFull{opacity:1}
+.nudge{background:var(--cream);color:var(--ink);border:2px solid var(--black);border-radius:14px;padding:12px 14px;margin:0 0 14px;box-shadow:0 3px 0 var(--black)}
+.nudge .ntxt b{display:block;font-family:var(--fd);font-weight:400;font-size:20px;text-transform:uppercase;margin-bottom:3px}.nudge .ntxt span{font-size:15px;line-height:1.35;color:var(--mute)}
+.nudge .nbtns{display:flex;gap:10px;margin-top:10px}.nudge .cta{font-size:17px;padding:9px 10px;margin:0}.nudge .cta.ghost{background:transparent;color:var(--ink);border:2px solid var(--black);box-shadow:none}
+.bkrow{display:flex;gap:10px}.bkrow .cta{font-size:18px}.bknote{font-size:14px;color:var(--cream);opacity:.85;margin:6px 2px 10px;text-align:center}
 .cta.dark{background:var(--black);color:var(--gold);font-size:22px;border-color:var(--gold);box-shadow:0 4px 0 #000}
 .tgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
 .tgrid button{background:#fff;border:2px solid var(--black);border-radius:10px;padding:10px 2px;font-size:18px}
@@ -282,7 +335,24 @@ select{appearance:none;-webkit-appearance:none;background:#fff url("data:image/s
 .brand span{white-space:nowrap;min-width:0;overflow:hidden;padding:0 .1em .12em}
 .bot .next{white-space:nowrap;overflow:hidden}
 /* killer */
-.modeseg{margin-bottom:6px}.modeseg button{font-size:28px}
+.modeseg{margin-bottom:6px;flex-direction:column}
+.modeseg button{white-space:nowrap;display:flex;align-items:baseline;justify-content:space-between;gap:10px;text-align:left;font-size:24px;padding:9px 14px 10px;border-right:none;border-bottom:2px solid var(--black)}
+.modeseg button:last-child{border-bottom:none}
+.modeseg button small{pointer-events:none;font-family:var(--ft);font-size:13px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;opacity:.7;text-shadow:none;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
+#sRounds button,#crScore button{font-size:19px}
+.rules{font-size:15px;line-height:1.3;margin:2px 0 8px;opacity:.9}
+.aprog{height:10px;border-radius:5px;background:var(--black);border:1px solid var(--goldd);overflow:hidden;margin:3px 0}.aprog i{display:block;height:100%;background:var(--gold)}
+.asub{font-size:clamp(13px,3.6vw,17px);opacity:.9}
+.ksolo{grid-template-columns:1fr}
+.crboard{background:var(--black);padding:3px;overflow:auto;max-height:42vh;display:block}
+.crt{width:100%;border-collapse:separate;border-spacing:2px;color:var(--cream);table-layout:fixed}
+.crt th{font-size:clamp(14px,3.8vw,20px);text-transform:uppercase;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;padding:4px 2px;background:var(--char);border-radius:6px}
+.crt th.on,.crt td.on{background:var(--red)}.crt th.win{background:var(--gold);color:var(--ink)}
+.crt td{background:var(--char);text-align:center;height:clamp(26px,4.6vh,40px);border-radius:6px;font-size:clamp(18px,5vw,26px);padding:0}
+.crt td.crn,.crt tr.crpts td:first-child{background:var(--black);color:var(--gold);font-family:var(--fd);width:48px}
+.crt tr.dead td{opacity:.35}.crt tr.crpts td{font-weight:700;font-size:clamp(18px,5vw,26px)}
+.crt .cm{font-weight:700}.crt .cm.c{color:var(--gold)}
+.crt.many th{font-size:13px}.crt.many td{font-size:16px}
 #kAssign button{font-family:var(--ft);font-weight:700;font-size:18px;text-transform:uppercase}
 .kboard{display:grid;grid-template-columns:1fr 1fr;gap:3px;background:var(--black);padding:3px;overflow-y:auto;max-height:38vh}
 .kcard{display:flex;align-items:center;gap:8px;background:var(--char);border-radius:10px;padding:8px;color:var(--cream);border:2px solid transparent;min-width:0}
@@ -306,6 +376,30 @@ select{appearance:none;-webkit-appearance:none;background:#fff url("data:image/s
 .hhead{position:sticky}.hhead .brand{padding:0 44px}
 .camsel{width:auto;max-width:42%;font-size:14px;padding:7px 28px 7px 10px;border:2px solid var(--gold);background-color:var(--black);color:var(--gold);border-radius:10px;background-position:right 8px center}
 @media (min-width:1100px){#play{max-width:1100px;margin:0 auto;box-shadow:0 0 0 100vmax var(--black)}}
+/* sideways (iPad on a stand, or AirPlay-mirrored to a TV): big scoreboard on the left, keypad on the right */
+@media (orientation:landscape) and (min-width:700px){
+  #play{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);grid-template-rows:auto auto auto minmax(0,1fr);max-width:none}
+  #play>.ptop{grid-column:1/-1;grid-row:1}
+  #play>.cambar{grid-column:1;grid-row:2}
+  #play>.strip{grid-column:1;grid-row:3}
+  #play>.board{grid-column:1;grid-row:4;min-height:0;align-self:stretch;overflow:auto}
+  #play>.inp{grid-column:2;grid-row:2/5;border-left:3px solid var(--gold)}
+  #play>.board:not(.kboard):not(.crboard){flex-wrap:wrap;align-content:stretch}
+  #play>.board:not(.kboard):not(.crboard) .pn{flex:1 0 100%;min-width:0;border-right:none;border-bottom:3px solid var(--black)}
+  #play>.board.many .pn{flex:1 0 50%;border-right:3px solid var(--black)}
+  #play>.board .pn.mir .pmain{flex-direction:row}#play>.board .pn.mir .pinfo{align-items:flex-start;text-align:left}#play>.board .pn.mir .plast{flex-direction:row}
+  #play .pmain{min-height:0}
+  #play .prem{font-size:clamp(60px,min(14vw,24vh),200px)}
+  #play>.board.many .prem{font-size:clamp(48px,min(8vw,16vh),130px)}
+  #play .pname{font-size:clamp(20px,3vw,40px)}
+  #play .plast{font-size:clamp(17px,2.2vw,30px)}
+  #play>.kboard{max-height:none;align-content:start}
+  #play>.crboard{max-height:none}
+  #play>.kboard .kcard{padding:12px;gap:12px}#play>.kboard .knum{width:clamp(56px,min(7vw,11vh),100px);height:clamp(56px,min(7vw,11vh),100px);font-size:clamp(28px,min(3.6vw,6vh),54px)}
+  #play>.kboard .kname{font-size:clamp(18px,2.6vw,34px)}#play>.kboard .klives{font-size:clamp(16px,2.2vw,30px)}#play>.kboard .asub{font-size:clamp(14px,1.8vw,24px)}
+  #play .crt th{font-size:clamp(14px,2.2vw,28px)}#play .crt td{height:clamp(30px,8vh,74px);font-size:clamp(18px,3vw,40px)}#play .crt tr.crpts td{font-size:clamp(18px,3vw,40px)}
+  #play .k{font-size:clamp(15px,2.3vw,30px)}
+}
 .recbtn.on{background:var(--red)!important;color:#fff!important;animation:recblink 1s infinite}
 @keyframes recblink{50%{opacity:.6}}
 .cambar button{padding:7px 7px}
@@ -313,6 +407,9 @@ select{appearance:none;-webkit-appearance:none;background:#fff url("data:image/s
 /* overlays */
 .banner{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(96px + env(safe-area-inset-bottom));background:var(--black);color:var(--cream);font-size:18px;padding:10px 12px 10px 16px;border-radius:14px;z-index:40;display:flex;gap:10px;align-items:center;box-shadow:0 6px 30px #0008;max-width:94vw;text-transform:uppercase;border:2px solid var(--gold)}
 .banner button{background:var(--gold);color:var(--ink);padding:6px 12px;border-radius:9px;font-size:16px}
+.cammoved{position:fixed;left:8px;right:8px;bottom:calc(10px + env(safe-area-inset-bottom));z-index:59;display:flex;align-items:center;gap:8px;background:var(--black);border:3px solid var(--gold);border-radius:14px;padding:10px 12px;color:var(--cream);box-shadow:0 6px 18px rgba(0,0,0,.5)}
+.cammoved div{flex:1;font-size:15px;line-height:1.25}.cammoved b{display:block;color:var(--gold);font-size:18px;text-transform:uppercase}
+.cammoved button{padding:10px 12px;border-radius:10px;border:2px solid var(--goldd);background:var(--black);color:var(--gold);font-weight:700;font-size:16px}.cammoved button.go{background:var(--gold);color:var(--ink)}
 .toast{position:fixed;left:50%;top:calc(6px + env(safe-area-inset-top));transform:translateX(-50%) scale(.95);background:var(--black);color:var(--cream);font-family:var(--fd);font-size:24px;padding:8px 18px 10px;border-radius:12px;z-index:60;opacity:0;transition:.2s;pointer-events:none;max-width:92vw;text-align:center;text-transform:uppercase;border:2px solid var(--gold)}
 .toast.show{opacity:1;transform:translateX(-50%) scale(1)}
 .toast.bust{background:var(--red)}.toast.ton{background:var(--gold);color:var(--ink);border-color:#000}
@@ -329,7 +426,6 @@ select{appearance:none;-webkit-appearance:none;background:#fff url("data:image/s
 .mt{width:100%;border-collapse:collapse;font-size:18px;margin-top:4px}
 .mt td,.mt th{padding:6px 4px;border-bottom:1px solid var(--rule)}
 .mt th{color:var(--red);font-size:13px;text-transform:uppercase}
-
 .musicbtn{display:none!important}
 .sndset summary{color:var(--red)}
 </style>
@@ -361,10 +457,25 @@ select{appearance:none;-webkit-appearance:none;background:#fff url("data:image/s
   </div>
 
   <div class="hbody" id="vPlay">
+    <div id="bkNudge" class="nudge hidden"><div class="ntxt"><b>Time for a stats backup?</b><span id="bkNudgeWhy">It's been a month or so. A copy in Files keeps your stats safe if this device is lost or reset.</span></div><div class="nbtns"><button id="bkNow" class="cta dark">Back up</button><button id="bkLater" class="cta ghost">Later</button></div></div>
     <button id="resumeBtn" class="cta dark hidden" style="margin:0 0 14px">Resume game</button>
     <div class="gcard"><div class="glabel">Colours</div><div class="seg2" id="themeSeg"><button data-v="blues">Blues</button><button data-v="villa">Villans</button></div></div>
     <div class="gcard">
-      <div class="seg2 modeseg" id="modeSeg"><button data-v="x01">X01</button><button data-v="killer">Killer</button></div>
+      <div class="seg2 modeseg" id="modeSeg"><button data-v="x01">X01<small>501 · 301 · custom</small></button><button data-v="killer">Killer<small>2–8 players · lives</small></button><button data-v="cricket">Cricket<small>20–15 &amp; bull</small></button><button data-v="atc">Around the Clock<small>1 to 20</small></button><button data-v="shanghai">Shanghai<small>rounds 1 to 7</small></button></div>
+      <div id="cOpts" class="hidden pOpts">
+        <div class="rules">Hit 1, 2, 3… up to 20 in order. Single, double or treble all count. First to finish wins.</div>
+        <div class="lrow"><span>Finish on the bull</span><button class="tog" id="cBull" aria-label="Finish on the bull"></button></div>
+        <div class="lrow"><span>Doubles &amp; trebles skip 2 &amp; 3</span><button class="tog" id="cJump" aria-label="Doubles and trebles skip ahead"></button></div>
+      </div>
+      <div id="sOpts" class="hidden pOpts">
+        <div class="rules">Round 1 aim for 1s, round 2 for 2s, and so on. Only that number scores (double ×2, treble ×3). Hit its single, double and treble in one visit — a <b>Shanghai</b> — and you win outright. Most points after the last round wins.</div>
+        <div class="glabel">Rounds</div><div class="seg2" id="sRounds"><button data-v="7">7</button><button data-v="9">9</button><button data-v="20">20</button></div>
+        <div class="lrow"><span>Shanghai wins instantly</span><button class="tog" id="sInstant" aria-label="Shanghai wins instantly"></button></div>
+      </div>
+      <div id="crOpts" class="hidden pOpts">
+        <div class="rules">Close 20 to 15 and the bull with 3 marks each (double = 2, treble = 3; 25 = 1, bull = 2). Once you've closed a number, more hits score its value while anyone else still has it open. First to close everything with the most points wins.</div>
+        <div class="glabel">Scoring</div><div class="seg2" id="crScore"><button data-v="std">Standard</button><button data-v="cut">Cut-throat</button><button data-v="none">No points</button></div>
+      </div>
       <div id="kOpts" class="hidden">
         <div class="lrow"><span>Lives</span><div class="stepper"><button id="kLivesM">−</button><b id="kLives">3</b><button id="kLivesP">+</button></div></div>
         <div class="lrow"><span>Points to be a killer</span><div class="stepper"><button id="kPtsM">−</button><b id="kPts">3</b><button id="kPtsP">+</button></div></div>
@@ -396,6 +507,8 @@ select{appearance:none;-webkit-appearance:none;background:#fff url("data:image/s
       <div id="pastWrap"><div class="glabel" style="margin-top:14px">Past players <span style="text-transform:none;letter-spacing:0;font-weight:400;opacity:.75">· tap to add — stats stay with the name</span></div><div id="pastP"></div></div>
     </div>
     <button id="startGame" class="cta">Start Game</button>
+    <button id="tvBtn" class="tvopen"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" style="stroke:var(--black)"><rect x="2.5" y="4" width="19" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg>TV scoreboard</button>
+    <p class="note" id="tvNote">Opens a big scoreboard in a new window that follows the game live. Drag it onto a TV or projector from a laptop, or an iPad with Stage Manager. On an iPhone or iPad, AirPlay screen mirroring and turning the device sideways works too.</p>
     <p class="note">Tip: in Safari tap Share → Add to Home Screen to use Darts App like an app. Stats are saved on this device.</p>
   </div>
 
@@ -421,6 +534,9 @@ select{appearance:none;-webkit-appearance:none;background:#fff url("data:image/s
     </div>
     <div id="stTable"></div>
     <button id="stClear" class="cta dark">Clear this player's stats</button>
+    <div class="bkrow"><button id="stBackup" class="cta dark">Back up stats</button><button id="stRestore" class="cta dark">Restore</button></div>
+    <input type="file" id="stFile" accept=".json,application/json" class="hidden">
+    <div class="bknote">Stats are kept on this device only. Save a backup to Files now and then, or to move them to another iPad or laptop.</div>
   </div>
 
   <div class="hbody hidden" id="vChart">
@@ -493,9 +609,23 @@ select{appearance:none;-webkit-appearance:none;background:#fff url("data:image/s
 <div id="banner" class="banner hidden"><span id="bannerTxt">Pull your darts</span><button id="bannerBtn">Done</button></div>
 <div id="ccall" class="ccall hidden"><canvas id="ccZoom" width="120" height="120"></canvas><div class="cc-r"><div class="cc-t">Close call — which was it?</div><div class="cc-b"><button id="ccA"></button><button id="ccB"></button></div></div></div>
 <div id="toast" class="toast"></div>
+<section id="tv" class="hidden">
+  <div id="tvStage">
+    <div class="tvhead"><div class="tvbrand"><svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="19" stroke="#000" stroke-width="2" style="fill:var(--gold)"/><circle cx="20" cy="20" r="13.5" stroke="#000" stroke-width="1.5" style="fill:var(--red)"/><circle cx="20" cy="20" r="8" style="fill:var(--cream)"/><circle cx="20" cy="20" r="3.5" style="fill:var(--black)"/></svg><span class="ol">Darts App</span></div><div class="tvtitle ol" id="tvTitle"></div></div>
+    <div id="tvBoard" class="board"></div>
+    <div id="tvStrip" class="strip"></div>
+  </div>
+  <div id="tvIdle"><svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="19" stroke="#000" stroke-width="2" style="fill:var(--gold)"/><circle cx="20" cy="20" r="13.5" stroke="#000" stroke-width="1.5" style="fill:var(--red)"/><circle cx="20" cy="20" r="8" style="fill:var(--cream)"/><circle cx="20" cy="20" r="3.5" style="fill:var(--black)"/></svg><b class="ol">Darts App</b><span>TV scoreboard · waiting for a game</span><small>Start a game on the scorer and it appears here.</small></div>
+  <div id="tvWin" class="hidden"><small id="tvWinSub"></small><b class="ol" id="tvWinName"></b></div>
+  <div id="tvCall" class="hidden"></div>
+  <button id="tvFull">Full screen</button>
+</section>
+<div id="camMoved" class="cammoved hidden"><div><b>Camera has moved</b><span>A knock has shifted the picture by about <i id="cmAmt"></i> — scores may be off.</span></div><button id="cmFix" class="go">Fix it</button><button id="cmIgnore">Ignore</button></div>
 
 <script>
 'use strict';
+function TC(n){return getComputedStyle(document.documentElement).getPropertyValue('--'+n).trim()||'#fff'}
+const TVM=/[?&]tv(=|&|$)/.test(location.search);if(TVM)document.documentElement.classList.add('tvm');
 /* ---------- utilities ---------- */
 const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
 const store={get(k,d){try{const v=localStorage.getItem(k);return v==null?d:JSON.parse(v)}catch(e){return d}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}},del(k){try{localStorage.removeItem(k)}catch(e){}}};
@@ -574,7 +704,12 @@ const S={setup:store.get('dartsapp.setup',{start:501,custom:701,doubleOut:true,l
   home:'play',st:{player:null,view:'heat',recent:10,mode:'all'}};
 if(S.input!=='keypad'&&S.input!=='board')S.input='keypad';
 const saveSetup=()=>store.set('dartsapp.setup',S.setup);
-function show(id){['home','play'].forEach(s=>$('#'+s).classList.toggle('hidden',s!==id));window.scrollTo(0,0)}
+function show(id){['home','play'].forEach(s=>$('#'+s).classList.toggle('hidden',s!==id));window.scrollTo(0,0);wake(id==='play')}
+// keep the screen on during a game, so the iPad doesn't lock between visits (iPadOS 16.4+, most browsers)
+const WAKE={want:false,lock:null};
+async function wake(on){WAKE.want=on;try{if(on&&!WAKE.lock&&navigator.wakeLock){WAKE.lock=await navigator.wakeLock.request('screen');WAKE.lock.addEventListener('release',()=>{WAKE.lock=null})}
+  else if(!on&&WAKE.lock){const l=WAKE.lock;WAKE.lock=null;await l.release()}}catch(e){WAKE.lock=null}}
+document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='visible'&&WAKE.want)wake(true)});
 
 /* ================= HOME ================= */
 const TARGETS={free:{name:'Free throw',short:'Free',hit:()=>false},T20:{name:'Treble 20',short:'T20',hit:k=>k==='T20'},T19:{name:'Treble 19',short:'T19',hit:k=>k==='T19'},T18:{name:'Treble 18',short:'T18',hit:k=>k==='T18'},
@@ -584,12 +719,16 @@ function setHome(v){S.home=v;$$('#nav button').forEach(b=>b.classList.toggle('on
   ['Play','Practice','Stats','Chart'].forEach(k=>$('#v'+k).classList.toggle('hidden',k.toLowerCase()!==v));
   if(v==='stats')renderStats();if(v==='chart')renderChart();if(v==='play'||v==='practice')renderHome()}
 $('#nav').onclick=e=>{const v=e.target.dataset.v;if(v)setHome(v)};
-function renderHome(){const st=S.setup;
+function renderHome(){const st=S.setup;try{bkCheck()}catch(e){}
   $$('#startSeg button').forEach(b=>b.classList.toggle('on',String(st.start)===b.dataset.v));
   $('#customWrap').classList.toggle('hidden',st.start!=='x01');$('#customStart').value=st.custom;
   $('#dblToggle').classList.toggle('on',st.doubleOut);$('#legVal').textContent=st.legs;renderVoice();
   st.mode=st.mode||'x01';st.k=Object.assign({lives:3,pts:3,assign:'throw',suicide:true,demote:true,mult:false},st.k||{});
-  $$('#modeSeg button').forEach(b=>b.classList.toggle('on',b.dataset.v===st.mode));$('#kOpts').classList.toggle('hidden',st.mode!=='killer');$('#xOpts').classList.toggle('hidden',st.mode==='killer');
+  st.atc=Object.assign({bull:false,jump:false},st.atc||{});st.sh=Object.assign({rounds:7,instant:true},st.sh||{});st.cr=Object.assign({score:'std'},st.cr||{});
+  $$('#modeSeg button').forEach(b=>b.classList.toggle('on',b.dataset.v===st.mode));$('#kOpts').classList.toggle('hidden',st.mode!=='killer');$('#xOpts').classList.toggle('hidden',st.mode!=='x01');
+  $('#cOpts').classList.toggle('hidden',st.mode!=='atc');$('#sOpts').classList.toggle('hidden',st.mode!=='shanghai');$('#crOpts').classList.toggle('hidden',st.mode!=='cricket');
+  $('#cBull').classList.toggle('on',st.atc.bull);$('#cJump').classList.toggle('on',st.atc.jump);$('#sInstant').classList.toggle('on',st.sh.instant);
+  $$('#sRounds button').forEach(b=>b.classList.toggle('on',+b.dataset.v===st.sh.rounds));$$('#crScore button').forEach(b=>b.classList.toggle('on',b.dataset.v===st.cr.score));
   $('#kLives').textContent=st.k.lives;$('#kPts').textContent=st.k.pts;$$('#kAssign button').forEach(b=>b.classList.toggle('on',b.dataset.v===st.k.assign));
   $('#kSuicide').classList.toggle('on',st.k.suicide);$('#kDemote').classList.toggle('on',st.k.demote);$('#kMult').classList.toggle('on',st.k.mult);
   $('#plist').innerHTML=st.players.map((p,i)=>`<div class="prow" data-r="${i}">${st.players.length>1?`<span class="grip" aria-label="Hold and drag to change the order">${i+1}<i></i><i></i></span>`:''}<input data-i="${i}" value="${esc(p)}" maxlength="14" placeholder="Name">${st.players.length>1?`<button data-x="${i}" aria-label="Remove">×</button>`:''}</div>`).join('');
@@ -634,8 +773,12 @@ $('#pastP').onclick=e=>{const b=e.target.closest('button');if(!b)return;const n=
 $('#addPlayer').onclick=()=>{S.setup.players.push('Player '+(S.setup.players.length+1));saveSetup();renderHome()};
 $('#pracName').oninput=e=>{S.setup.prac=e.target.value;saveSetup()};
 $('#pracTargets').onclick=e=>{const t=e.target.dataset.t;if(t){S.setup.target=t;saveSetup();renderHome()}};
-$('#startGame').onclick=()=>S.setup.mode==='killer'?newKiller():newMatch();
-$('#modeSeg').onclick=e=>{const v=e.target.dataset.v;if(v){S.setup.mode=v;saveSetup();renderHome()}};
+$('#startGame').onclick=()=>{const m=S.setup.mode;if(m==='killer')newKiller();else if(m==='atc'||m==='shanghai'||m==='cricket')newParty(m);else newMatch()};
+$('#cBull').onclick=()=>{S.setup.atc.bull=!S.setup.atc.bull;saveSetup();renderHome()};$('#cJump').onclick=()=>{S.setup.atc.jump=!S.setup.atc.jump;saveSetup();renderHome()};
+$('#sInstant').onclick=()=>{S.setup.sh.instant=!S.setup.sh.instant;saveSetup();renderHome()};
+$('#sRounds').onclick=e=>{const v=e.target.dataset.v;if(v){S.setup.sh.rounds=+v;saveSetup();renderHome()}};
+$('#crScore').onclick=e=>{const v=e.target.dataset.v;if(v){S.setup.cr.score=v;saveSetup();renderHome()}};
+$('#modeSeg').onclick=e=>{const bt=e.target.closest('button');const v=bt&&bt.dataset.v;if(v){S.setup.mode=v;saveSetup();renderHome()}};
 const kSet=(f,v)=>{S.setup.k[f]=v;saveSetup();renderHome()};
 $('#kLivesM').onclick=()=>kSet('lives',Math.max(1,S.setup.k.lives-1));$('#kLivesP').onclick=()=>kSet('lives',Math.min(9,S.setup.k.lives+1));
 $('#kPtsM').onclick=()=>kSet('pts',Math.max(1,S.setup.k.pts-1));$('#kPtsP').onclick=()=>kSet('pts',Math.min(9,S.setup.k.pts+1));
@@ -655,7 +798,7 @@ const ONES=['zero','one','two','three','four','five','six','seven','eight','nine
 function words(n){n=Math.round(n);if(n<20)return ONES[n];if(n<100)return TENS[Math.floor(n/10)]+(n%10?'-'+ONES[n%10]:'');if(n<1000)return ONES[Math.floor(n/100)]+' hundred'+(n%100?' and '+words(n%100):'');return String(n)}
 function pickVoice(){if(!VOICE.ok)return;const vs=speechSynthesis.getVoices();fillVoices(vs);const mine=VOICE.name&&vs.find(v=>v.name===VOICE.name);if(mine){VOICE.v=mine;return}VOICE.v=vs.find(v=>/en[-_]GB/i.test(v.lang)&&/Daniel|Arthur|Oliver|George|Male/i.test(v.name))||vs.find(v=>/en[-_]GB/i.test(v.lang))||vs.find(v=>/^en/i.test(v.lang))||null}
 if(VOICE.ok){pickVoice();try{speechSynthesis.onvoiceschanged=pickVoice}catch(e){}}
-function say(text,o={}){if(!VOICE.on||!VOICE.ok||!text)return;try{const u=new SpeechSynthesisUtterance(text);if(!VOICE.v)pickVoice();if(VOICE.v)u.voice=VOICE.v;u.lang=VOICE.v?VOICE.v.lang:'en-GB';u.rate=o.rate||1.02;u.pitch=o.pitch||1;u.volume=Math.max(0,Math.min(1,VOICE.vol/100));speechSynthesis.speak(u)}catch(e){}}
+function say(text,o={}){if(!o.dart)tvCallPost(text);if(!VOICE.on||!VOICE.ok||!text)return;try{const u=new SpeechSynthesisUtterance(text);if(!VOICE.v)pickVoice();if(VOICE.v)u.voice=VOICE.v;u.lang=VOICE.v?VOICE.v.lang:'en-GB';u.rate=o.rate||1.02;u.pitch=o.pitch||1;u.volume=Math.max(0,Math.min(1,VOICE.vol/100));speechSynthesis.speak(u)}catch(e){}}
 function fillVoices(vs){const sel=document.getElementById('voicePick');if(!sel||!vs.length)return;const en=vs.filter(v=>/^en/i.test(v.lang));const L=(en.length?en:vs).slice().sort((a,b)=>(/GB/i.test(b.lang)-/GB/i.test(a.lang))||a.name.localeCompare(b.name));
   sel.innerHTML='<option value="">Automatic (British)</option>'+L.map(v=>`<option value="${esc(v.name)}">${esc(v.name)} · ${esc(v.lang)}</option>`).join('');sel.value=VOICE.name&&L.some(v=>v.name===VOICE.name)?VOICE.name:''}
 let voiceUnlocked=false;function unlockVoice(){if(voiceUnlocked||!VOICE.ok)return;voiceUnlocked=true;try{const u=new SpeechSynthesisUtterance(' ');u.volume=0;speechSynthesis.speak(u)}catch(e){}}
@@ -680,7 +823,7 @@ function checkoutCall(darts,total){const last=darts[darts.length-1],bull=darts.s
   if(last.n===20&&last.m===2)return'Double tops!';
   if(total===57)return'Heinz fifty-seven!';
   if(total>=100)return words(total)+' checkout!';return''}
-function callDart(d){if(VOICE.each&&!S.padding)say(dartWords(d))}
+function callDart(d){if(VOICE.each&&!S.padding)say(dartWords(d),{dart:1})}
 function callGameVisit(t){const m=S.match,st=deriveLeg(m);if(!t||!t.done)return;
   if(t.checkout){const p=t.p,win=m.players[p].legs+1>=m.legsToWin,sp=checkoutCall(t.darts,turnSum(t));if(sp)say(sp,{rate:.92,pitch:1.05});
     say(`Game shot, and the ${win?'match':'leg'}, ${m.players[p].name}!`,{rate:.95});return}
@@ -751,6 +894,7 @@ function pracNext(){S.edit=null;const k=S.practice.darts.length%3;if(k===0)retur
 /* the visit shown in the strip (editable) */
 function stripVisit(){
   if(S.mode==='killer')return killerVisit();
+  if(S.mode==='party')return partyVisit();
   if(S.mode==='game'){const m=S.match,st=deriveLeg(m);
     if(st.open)return{darts:st.open.darts,turn:st.open,past:false};
     if(st.last&&cam.on&&(cam.awaitRemoval||cam.showLast)&&!m.pending)return{darts:st.last.darts,turn:st.last,past:true,who:m.players[st.last.p].name};
@@ -759,7 +903,7 @@ function stripVisit(){
   if(k)return{darts:d.slice(-k),base:d.length-k,past:false};
   if(d.length&&cam.on&&(cam.awaitRemoval||cam.showLast))return{darts:d.slice(-3),base:d.length-3,past:true};
   return{darts:[],base:d.length,past:false}}
-function replaceDart(i,d){{const o=stripVisit().darts[i];if(o&&o.det&&!(o.n===d.n&&o.m===d.m))learnFrom(o,d,'fix');rlog('fix',{i,from:o&&o.label,fx:o&&o.x,fy:o&&o.y,to:d.label,x:d.a?null:d.x,y:d.a?null:d.y})}if(S.mode==='killer'){killerReplace(i,d);toast('Changed to '+d.label);return}const v=stripVisit();if(i>=v.darts.length)return;
+function replaceDart(i,d){{const o=stripVisit().darts[i];if(o&&o.det&&!(o.n===d.n&&o.m===d.m))learnFrom(o,d,'fix');rlog('fix',{i,from:o&&o.label,fx:o&&o.x,fy:o&&o.y,to:d.label,x:d.a?null:d.x,y:d.a?null:d.y})}if(S.mode==='killer'){killerReplace(i,d);toast('Changed to '+d.label);return}if(S.mode==='party'){partyReplace(i,d);toast('Changed to '+d.label);return}const v=stripVisit();if(i>=v.darts.length)return;
   if(S.mode==='game'){const m=S.match;if(m.pending||m.over)return;const t=v.turn;t.darts[i]=d;
     // trim darts thrown after a bust or checkout
     let s=t.before;for(let j=0;j<t.darts.length;j++){s-=t.darts[j].v;if(s<0||(m.doubleOut&&s===1)||s===0){t.darts.length=j+1;break}}
@@ -856,16 +1000,111 @@ function killerModal(){const km=S.killer,st=kDerive(km),w=km.winner;
   $('#modal').classList.remove('hidden');
   $('#kmUndo').onclick=killerUndo;$('#kmSame').onclick=()=>{hideModal();newKiller({players:km.players,keepNums:true,nums:st.nums})};$('#kmNew').onclick=()=>{hideModal();newKiller({players:km.players})}}
 
+/* ================= AROUND THE CLOCK · SHANGHAI · CRICKET =================
+   One engine for the three "party" games. Like X01 and Killer, every dart is stored and the rules are replayed,
+   so undo and corrections always stay consistent. */
+const CRK=[20,19,18,17,16,15,25],PNAME={atc:'Around the Clock',shanghai:'Shanghai',cricket:'Cricket'};
+function newParty(type,prev){const st=S.setup,o=type==='atc'?st.atc:type==='shanghai'?st.sh:st.cr;
+  const names=prev?prev.players.slice():st.players.map((p,i)=>canonName(p,'Player '+(i+1)));
+  S.party={id:'g'+Date.now(),type,players:names,o:Object.assign({},o),turns:[],over:false,winner:null};S.mode='party';openPlay();
+  const pm=S.party,s=pDerive(pm);say(type==='atc'?`Around the clock! ${names[0]}, you need ${words(s.target[0])}.`:type==='shanghai'?`Shanghai! Round one. ${names[0]} to throw.`:`Cricket! ${names[0]} to throw first. Game on!`)}
+function pDerive(pm){const n=pm.players.length,o=pm.o,T=pm.type,R={n,cur:0,open:null,last:null,winners:null,fin:Array(n).fill(false)};
+  // --- Around the Clock: hit 1 to 20 in order (then the bull if chosen); any bed of the number counts
+  const seq=[...Array(20)].map((_,i)=>i+1);if(T==='atc'&&o.bull)seq.push(25);
+  const pos=Array(n).fill(0),score=Array(n).fill(0),marks=[...Array(n)].map(()=>({})),darts=Array(n).fill(0);let win=null;
+  for(let ti=0;ti<pm.turns.length;ti++){const t=pm.turns[ti],p=t.p;t.fx=[];t.done=false;
+    const round=Math.floor(ti/n)+1;t.round=round;const hitM=new Set();
+    for(const d of t.darts){let fx='';if(win!=null){t.fx.push('');continue}darts[p]++;
+      if(T==='atc'){const want=seq[pos[p]];const hit=want===25?d.n===25&&d.m>0:d.n===want&&d.m>0;
+        if(hit){const adv=o.jump&&want!==25?d.m:1;pos[p]=Math.min(seq.length,pos[p]+adv);fx=pos[p]>=seq.length?'DONE':adv>1?'+'+adv:'✓';if(pos[p]>=seq.length)win=p}}
+      else if(T==='shanghai'){if(d.m>0&&d.n===round){score[p]+=round*d.m;hitM.add(d.m);fx='+'+round*d.m;
+          if(o.instant&&hitM.size===3){fx='SHANGHAI';win=p}}}
+      else{const v=CRK.includes(d.n)&&d.m>0?d.n:0;
+        if(v){const had=marks[p][v]||0,add=d.m,closed=Math.min(3,had+add),extra=had>=3?add:Math.max(0,had+add-3),pts=v===25?25:v;marks[p][v]=had+add;
+          const openOpp=[...Array(n).keys()].filter(q=>q!==p&&(marks[q][v]||0)<3);
+          if(extra&&openOpp.length&&o.score!=='none'){if(o.score==='cut')openOpp.forEach(q=>score[q]+=extra*pts);else score[p]+=extra*pts;fx=(o.score==='cut'?'+':'+')+extra*pts}
+          else fx=had<3&&closed===3?'CLOSED':had<3?'+'+(closed-had):'';
+          // win: all seven closed and ahead on points (or behind, in cut-throat)
+          const all=CRK.every(x=>(marks[p][x]||0)>=3),others=[...Array(n).keys()].filter(q=>q!==p).map(q=>score[q]);
+          if(all&&(o.score==='none'||!others.length||(o.score==='cut'?score[p]<=Math.min(...others):score[p]>=Math.max(...others)))){win=p;fx='WIN'}}}
+      t.fx.push(fx)}
+    t.done=t.darts.length>=3||win!=null}
+  if(T==='atc'){R.target=pos.map(i=>seq[Math.min(i,seq.length-1)]);R.pos=pos;R.len=seq.length;R.darts=darts}
+  R.score=score;R.marks=marks;R.rounds=o.rounds||7;
+  const last=pm.turns[pm.turns.length-1];R.last=last||null;
+  if(!last)R.cur=0;else if(!last.done){R.cur=last.p;R.open=last}else R.cur=(last.p+1)%n;
+  R.round=Math.floor((pm.turns.length-(R.open?1:0))/n)+1;
+  if(win!=null)R.winners=[win];
+  else if(T==='shanghai'&&R.round>R.rounds&&!R.open){const top=Math.max(...score);R.winners=score.map((s,i)=>s===top?i:-1).filter(i=>i>=0)}
+  return R}
+function partyAdd(d){const pm=S.party;if(pm.over)return;let s=pDerive(pm);let t=s.open;if(!t){t={p:s.cur,darts:[]};pm.turns.push(t)}t.darts.push(d);
+  s=pDerive(pm);callDart(d);const fx=t.fx[t.darts.length-1],nm=pm.players[t.p];
+  if(fx==='SHANGHAI'){say('Shanghai!',{rate:.9});toast('SHANGHAI!','ton')}
+  else if(fx==='CLOSED'&&!S.padding){say(`${d.n===25?'Bull':words(d.n)} closed.`);toast(`${d.n===25?'Bull':d.n} closed`)}
+  if(s.winners){partyEnd(s);return}
+  if(t.done&&cam.on&&cam.auto&&!cam.showLast)cam.awaitRemoval=true;
+  if(t.done){const q=s.cur,qn=pm.players[q];
+    if(pm.type==='atc')say(`${qn}, you need ${s.target[q]===25?'the bull':words(s.target[q])}.`);
+    else if(pm.type==='shanghai'){if(q===0&&pm.players.length>0&&!s.open)say(`Round ${words(s.round)}. ${qn}.`);else say(`${qn}.`)}
+    else say(`${qn}.`)}
+  renderPlay()}
+function partyEnd(s){const pm=S.party;pm.over=true;pm.winner=s.winners;const w=s.winners;
+  say(w.length>1?`It's a tie between ${w.map(i=>pm.players[i]).join(' and ')}!`:pm.players.length===1?`Well done ${pm.players[w[0]]}!`:`Game shot! ${pm.players[w[0]]} wins!`,{rate:.95});renderPlay();partyModal()}
+function partyUndo(){const pm=S.party;S.edit=null;pm.over=false;pm.winner=null;hideModal();const tr=pm.turns,last=tr[tr.length-1];
+  if(last){last.darts.pop();if(!last.darts.length)tr.pop()}cam.awaitRemoval=false;renderPlay()}
+function partyNext(){const pm=S.party;if(pm.over)return;S.edit=null;const s=pDerive(pm),have=s.open?s.open.darts.length:0;
+  S.padding=true;try{for(let i=have;i<3;i++){const s2=pDerive(pm);if(i>have&&!s2.open)break;partyAdd(mkDart(0,0));if(S.party.over)break}}finally{S.padding=false}}
+function partyVisit(){const pm=S.party,s=pDerive(pm);if(s.open)return{darts:s.open.darts,turn:s.open,past:false};
+  if(s.last&&cam.on&&(cam.awaitRemoval||cam.showLast)&&!pm.over)return{darts:s.last.darts,turn:s.last,past:true,who:pm.players[s.last.p]};
+  return{darts:[],turn:null,past:false}}
+function partyReplace(i,d){const pm=S.party,v=partyVisit();if(!v.turn||i>=v.darts.length)return;const t=v.turn;t.darts[i]=d;
+  const full=t.darts.slice();let keep=full.length;for(let j=0;j<full.length-1;j++){t.darts=full.slice(0,j+1);if(pDerive(pm).winners){keep=j+1;break}}
+  t.darts=full.slice(0,keep);pm.over=false;pm.winner=null;const s=pDerive(pm);if(s.winners){partyEnd(s);return}renderPlay()}
+const crMk=k=>k>=3?'<b class="cm c">Ⓧ</b>':k===2?'<b class="cm">✕</b>':k===1?'<b class="cm">╱</b>':'<b class="cm e"></b>';
+function renderParty(){const pm=S.party,s=pDerive(pm),n=pm.players.length,board=$('#board'),T=pm.type,v=partyVisit(),p=v.turn?v.turn.p:s.cur;
+  const isW=i=>pm.winner&&pm.winner.includes(i);
+  {const pt=$('#playTitle');pt.innerHTML={atc:"Clock",shanghai:"Shanghai",cricket:"Cricket"}[T];requestAnimationFrame(()=>fitText(pt))}
+  if(T==='cricket'){board.className='board crboard';
+    const head=`<tr><th></th>${pm.players.map((nm,i)=>`<th class="${i===p&&!pm.over?'on':''} ${isW(i)?'win':''}">${esc(nm)}</th>`).join('')}</tr>`;
+    const rows=CRK.map(x=>{const allC=pm.players.every((_,i)=>(s.marks[i][x]||0)>=3);return`<tr class="${allC?'dead':''}"><td class="crn">${x===25?'B':x}</td>${pm.players.map((_,i)=>`<td class="${i===p&&!pm.over?'on':''}">${crMk(s.marks[i][x]||0)}</td>`).join('')}</tr>`}).join('');
+    const pts=pm.o.score==='none'?'':`<tr class="crpts"><td>PTS</td>${pm.players.map((_,i)=>`<td class="${i===p&&!pm.over?'on':''}">${s.score[i]}</td>`).join('')}</tr>`;
+    board.innerHTML=`<table class="crt${n>4?' many':''}">${head}${rows}${pts}</table>`}
+  else{board.className='board kboard'+(n>4?' kmany':'')+(n===1?' ksolo':'');
+    board.innerHTML=pm.players.map((nm,i)=>{const on=i===p&&!pm.over;let big,info;
+      if(T==='atc'){big=s.pos[i]>=s.len?'✓':s.target[i]===25?'B':s.target[i];info=`<div class="aprog"><i style="width:${Math.round(s.pos[i]/s.len*100)}%"></i></div><div class="asub">${s.pos[i]}/${s.len} · ${s.darts[i]} darts</div>`}
+      else{big=s.score[i];info=`<div class="asub">${pm.turns.filter(t=>t.p===i&&t.done).length} of ${s.rounds} rounds</div>`}
+      return`<div class="kcard ${on?'on':''} ${isW(i)?'win':''}"><div class="knum ol">${big}</div><div class="kinfo"><div class="kname">${esc(nm)}</div>${info}</div></div>`}).join('')}
+  let h='';for(let i=0;i<3;i++){const d=v.darts[i];if(d){const fx=v.turn.fx[i]||'';h+=`<div class="dslot m${d.m||0} ${v.past?'past':''} ${S.edit===i?'edit':''}" data-i="${i}">${d.label}${fx?`<span class="tag">${esc(fx)}</span>`:''}</div>`}else h+=`<div class="dslot">${DART_SVG}</div>`}
+  const openNums=CRK.filter(x=>(s.marks[p][x]||0)<3),scoring=CRK.filter(x=>(s.marks[p][x]||0)>=3&&pm.players.some((_,q)=>q!==p&&(s.marks[q][x]||0)<3));
+  const cap=S.edit!=null?'Tap the correct score below':v.past?`${v.who}'s last visit · tap a dart to correct`:
+    T==='atc'?`${pm.players[p]}: aim for ${s.target[p]===25?'the bull':s.target[p]}${pm.o.jump&&s.target[p]!==25?' (double skips 2, treble 3)':''}`:
+    T==='shanghai'?`${pm.players[p]}: round ${Math.min(s.round,s.rounds)} of ${s.rounds} — aim for ${Math.min(s.round,s.rounds)}s`:
+    `${pm.players[p]}: ${openNums.length?'close '+openNums.map(x=>x===25?'bull':x).join(', '):''}${scoring.length&&pm.o.score!=='none'?(openNums.length?' · ':'')+'score on '+scoring.map(x=>x===25?'bull':x).join(', '):''}`;
+  $('#strip').innerHTML=h+`<div class="stripcap">${esc(cap)}</div>`;
+  $$('#kp .k[data-n]').forEach(k=>{const num=+k.dataset.n;let mine=false,tgt=false;
+    if(!pm.over){if(T==='atc')mine=num===s.target[p];else if(T==='shanghai')mine=num===Math.min(s.round,s.rounds);else{mine=openNums.includes(num);tgt=scoring.includes(num)&&pm.o.score!=='none'}}
+    k.classList.toggle('kmine',mine);k.classList.toggle('ktarget',tgt)});
+  $('#nextBtn').textContent=n>1?'Next Player':'Next Visit'}
+function partyModal(){const pm=S.party,s=pDerive(pm),w=pm.winner||[],T=pm.type;
+  const val=i=>T==='atc'?`${s.pos[i]}/${s.len} · ${s.darts[i]} darts`:T==='shanghai'?s.score[i]:`${CRK.filter(x=>(s.marks[i][x]||0)>=3).length}/7 closed${pm.o.score==='none'?'':' · '+s.score[i]+' pts'}`;
+  const rows=pm.players.map((nm,i)=>`<tr><td style="text-align:left">${esc(nm).toUpperCase()}</td><td>${val(i)}</td><td>${w.includes(i)?'🏆':''}</td></tr>`).join('');
+  $('#mbox').innerHTML=`<div class="mhead"><small>${PNAME[T]} · ${w.length>1?'tie':'winner'}</small><h3 class="ol">🏆 ${w.map(i=>esc(pm.players[i])).join(' & ')}</h3></div>
+   <div class="mbody"><table class="mt">${rows}</table></div>
+   <div class="mbtns"><button id="pmUndo">Undo dart</button><button id="pmAgain">Play again</button><button id="pmDone">Done</button></div>`;
+  $('#modal').classList.remove('hidden');
+  $('#pmUndo').onclick=partyUndo;$('#pmAgain').onclick=()=>{hideModal();newParty(T,{players:pm.players})};$('#pmDone').onclick=()=>goHome('play')}
+
 /* input routing */
 function input(d,src){hideCC();
   if(S.edit!=null){const i=S.edit;S.edit=null;replaceDart(i,d);return}
   rlog('input',{src:src||'key',label:d.label,x:d.a?null:d.x,y:d.a?null:d.y});
   if(src!=='cam'&&cam.on){cam.awaitRemoval=false;if(cam.prev)cam.ref=cam.prev}
   addDart(d);try{navigator.vibrate&&navigator.vibrate(12)}catch(e){}}
-function addDart(d){cam.showLast=false;if(S.mode==='game')gameAdd(d);else if(S.mode==='killer')killerAdd(d);else pracAdd(d)}
-const undo=()=>{hideCC();rlog('undo');S.mode==='game'?gameUndo():S.mode==='killer'?killerUndo():pracUndo()};
+function addDart(d){cam.showLast=false;if(S.mode==='game')gameAdd(d);else if(S.mode==='killer')killerAdd(d);else if(S.mode==='party')partyAdd(d);else pracAdd(d)}
+const nextFor=()=>S.mode==='game'?gameNext():S.mode==='killer'?killerNext():S.mode==='party'?partyNext():pracNext();
+const undo=()=>{hideCC();rlog('undo');S.mode==='game'?gameUndo():S.mode==='killer'?killerUndo():S.mode==='party'?partyUndo():pracUndo()};
 $('#undoBtn').onclick=undo;
-$('#nextBtn').onclick=()=>{hideCC();S.mode==='game'?gameNext():S.mode==='killer'?killerNext():pracNext()};
+$('#nextBtn').onclick=()=>{hideCC();nextFor()};
 
 /* ================= PLAY SCREEN ================= */
 function openPlay(){musicStop();show('play');S.vb=null;S.edit=null;setInput(S.input);renderPlay();renderVoice()}
@@ -881,8 +1120,9 @@ function renderStrip(rem,dbl,showHint){const v=stripVisit(),darts=v.darts,left=3
     nx=`<div class="nextco"><b>${esc(nm)}</b> needs ${rem}: ${r?r.route.map(tLabel).join(' · '):'no finish — set up'}</div>`}
   $('#strip').innerHTML=h+(cap?`<div class="stripcap">${cap}</div>`:'')+nx}
 $('#strip').onclick=e=>{const s=e.target.closest('.dslot[data-i]');if(!s)return;const i=+s.dataset.i;S.edit=S.edit===i?null:i;if(S.edit!=null)toast('Pick the correct score');renderPlay()};
-function renderPlay(){const board=$('#board');$$('#kp .k').forEach(k=>k.classList.remove('kmine','ktarget'));
+function renderPlay(){const board=$('#board');$('#playTitle').style.fontSize='';$$('#kp .k').forEach(k=>k.classList.remove('kmine','ktarget'));
   if(S.mode==='killer'){renderKiller();if(S.input==='board')renderBoardTap();updateCamUI();fitText($('#nextBtn'));return}
+  if(S.mode==='party'){renderParty();if(S.input==='board')renderBoardTap();updateCamUI();fitText($('#nextBtn'));return}
   if(S.mode==='game'){const m=S.match,st=deriveLeg(m),n=m.players.length;
     $('#playTitle').innerHTML=`${m.start}<small>${m.legsToWin>1?`LEG ${m.legs.length+1} · FIRST TO ${m.legsToWin}`:''}${m.doubleOut?'':' · STRAIGHT OUT'}</small>`;
     board.className='board'+(n===1?' solo':'')+(n>2?' many':'');
@@ -930,6 +1170,57 @@ $('#boardTap').onclick=e=>{const svg=$('#boardTap svg');if(!svg)return;const r=s
   S.vb=null;const[n,m]=scoreAt(sx,-sy);const d=mkDart(n,m,sx,-sy,false);input(d,'board');toast(longName(d))};
 $('#zoomToggle').onclick=()=>{S.zoom=!S.zoom;S.vb=null;store.set('dartsapp.zoom',S.zoom);renderBoardTap()};
 
+/* ================= TV SCOREBOARD =================
+   The scorer posts a copy of its scoreboard after every change; a second window opened with ?tv=1 shows it big.
+   BroadcastChannel carries it live; a copy in storage lets a freshly opened TV window catch up straight away. */
+const TVCH=(()=>{try{return new BroadcastChannel('dartsapp-tv')}catch(e){return null}})();
+let tvTimer=0;
+function tvLive(){return !TVM&&!$('#play').classList.contains('hidden')}
+function tvSnap(){if(!tvLive())return{k:'snap',id:Date.now()+Math.random(),t:Date.now(),live:false};
+  let title=$('#playTitle').innerHTML;if(S.mode==='party'&&S.party)title=PNAME[S.party.type];
+  let win='',sub='';if(!$('#modal').classList.contains('hidden')){const sm=$('#mbox .mhead small'),h=$('#mbox .mhead h3');
+    if(sm&&h&&/winner|tie|game shot|match over/i.test(sm.textContent)){win=h.textContent.replace('🏆','').trim();sub=sm.textContent}}
+  return{k:'snap',id:Date.now()+Math.random(),t:Date.now(),live:true,title,bcls:$('#board').className,board:$('#board').innerHTML,strip:$('#strip').innerHTML,win,sub}}
+function tvPost(){tvTimer=0;if(TVM)return;const d=tvSnap();try{TVCH&&TVCH.postMessage(d)}catch(e){}try{localStorage.setItem('dartsapp.tv',JSON.stringify(d))}catch(e){}}
+function tvSoon(){if(!TVM&&!tvTimer)tvTimer=setTimeout(tvPost,60)}
+function tvCallPost(text){if(!tvLive()||!text)return;const d={k:'call',id:Date.now()+Math.random(),t:Date.now(),text:String(text)};try{TVCH&&TVCH.postMessage(d)}catch(e){}try{localStorage.setItem('dartsapp.tvcall',JSON.stringify(d))}catch(e){}}
+if(!TVM){const mo=new MutationObserver(tvSoon);['#board','#strip','#playTitle','#mbox'].forEach(q=>mo.observe($(q),{childList:true,subtree:true,characterData:true,attributes:true}));
+  ['#play','#modal'].forEach(q=>mo.observe($(q),{attributes:true,attributeFilter:['class']}));
+  if(TVCH)TVCH.addEventListener('message',e=>{if(e.data&&e.data.k==='hello')tvPost()})}
+$('#tvBtn').onclick=()=>{const w=window.open(location.pathname+'?tv=1','dartsapptv','popup,width=1280,height=720');if(!w)toast('Allow pop-ups to open the TV window','bust');setTimeout(tvPost,400)};
+// ---- the TV window itself ----
+const TVS={t:0,seen:new Set(),calls:[],callT:0,mouseT:0};
+function tvBoot(){$('#tv').classList.remove('hidden');$('#tv').classList.add('idle');wake(true);
+  addEventListener('resize',tvFit);
+  if(TVCH)TVCH.addEventListener('message',e=>tvGot(e.data));
+  addEventListener('storage',e=>{if(e.key==='dartsapp.tv'||e.key==='dartsapp.tvcall'){try{tvGot(JSON.parse(e.newValue))}catch(x){}}
+    else if(e.key&&/\.theme$/.test(e.key)){try{document.documentElement.dataset.theme=JSON.parse(e.newValue)}catch(x){}}});
+  try{const d=JSON.parse(localStorage.getItem('dartsapp.tv'));if(d&&Date.now()-d.t<6*36e5)tvGot(d)}catch(e){}
+  try{TVCH&&TVCH.postMessage({k:'hello'})}catch(e){}
+  $('#tvFull').onclick=()=>{const el=document.documentElement;try{document.fullscreenElement?document.exitFullscreen():(el.requestFullscreen||el.webkitRequestFullscreen).call(el)}catch(e){}};
+  addEventListener('mousemove',()=>{$('#tv').classList.add('mouse');clearTimeout(TVS.mouseT);TVS.mouseT=setTimeout(()=>$('#tv').classList.remove('mouse'),2500)});
+  document.title="Darts App · TV scoreboard";
+  try{document.fonts&&document.fonts.ready.then(tvFit)}catch(e){}}
+function tvGot(d){if(!d||!d.id||TVS.seen.has(d.id))return;TVS.seen.add(d.id);if(TVS.seen.size>200)TVS.seen=new Set([...TVS.seen].slice(-100));
+  if(d.k==='call'){if(Date.now()-d.t<8000)tvCall(d.text);return}
+  if(d.k!=='snap'||d.t<TVS.t)return;TVS.t=d.t;
+  const tv=$('#tv');tv.classList.toggle('idle',!d.live);if(!d.live){$('#tvWin').classList.add('hidden');return}
+  $('#tvTitle').innerHTML=d.title;
+  const b=$('#tvBoard');b.className=d.bcls;b.innerHTML=d.board;
+  const n=b.querySelectorAll('.pn,.kcard').length,isK=/kboard/.test(d.bcls);
+  const cols=isK?(n<=2?Math.max(1,n):n<=4?2:n<=6?3:4):(n<=4?Math.max(1,n):Math.ceil(n/2));
+  $('#tvStage').classList.toggle('wide',/crboard/.test(d.bcls)||(isK&&n>4));b.querySelectorAll('.pn.stack').forEach(x=>x.classList.remove('stack'));b.style.setProperty('--cols',cols);b.classList.toggle('c4',!isK&&cols>=4);
+  const st=$('#tvStrip');st.innerHTML=d.strip;st.querySelectorAll('.stripcap').forEach(c=>{const t=c.textContent.replace(/\s*·\s*tap a dart to correct/i,'');if(/^tap /i.test(t))c.remove();else c.textContent=t});
+  st.querySelectorAll('.dslot.edit').forEach(x=>x.classList.remove('edit'));
+  $('#tvWin').classList.toggle('hidden',!d.win);if(d.win){$('#tvWinSub').textContent=d.sub;$('#tvWinName').textContent=d.win}
+  tvFit()}
+function tvFit(){const st=$('#tvStage');if(!st)return;st.style.transform='translate(-50%,-50%)';const w=st.offsetWidth,h=st.offsetHeight;if(!w||!h)return;
+  const k=Math.min(innerWidth*.97/w,innerHeight*.96/h);st.style.transform=`translate(-50%,-50%) scale(${k})`}
+function tvCall(text){TVS.calls.push(text);if(TVS.calls.length>2)TVS.calls.splice(0,TVS.calls.length-2);if(!TVS.callT)tvNextCall()}
+function tvNextCall(){const el=$('#tvCall'),t=TVS.calls.shift();if(t==null){el.classList.add('hidden');TVS.callT=0;return}
+  el.textContent=t.replace(/[!.]+$/,'');el.classList.toggle('big',/one hundred and eighty|game shot|killer!|shanghai|is out|wins/i.test(t));
+  el.classList.remove('hidden');el.style.animation='none';void el.offsetWidth;el.style.animation='';TVS.callT=setTimeout(tvNextCall,TVS.calls.length?1300:2600)}
+
 /* modals */
 function hideModal(){$('#modal').classList.add('hidden')}
 function legModal(){const m=S.match,p=m.pending.p,st=deriveLeg(m),t=st.last;const win=m.players[p].legs+1>=m.legsToWin;
@@ -954,6 +1245,34 @@ function aggLegs(L){const a={n:L.length,nd:0,sc:0,f9s:0,f9d:0,dAtt:0,dHit:0,won:
     for(const k in a.b)a.b[k]+=l.b[k]||0;if(l.nd)a.best=Math.max(a.best,l.scored/l.nd*3);if(l.f9d)a.bestF9=Math.max(a.bestF9,l.f9s/l.f9d*3);
     if(l.co){a.hi=Math.max(a.hi,l.co);a.coSum+=l.co;a.coN++}if(l.won&&l.co&&(!a.fewest||l.nd<a.fewest))a.fewest=l.nd}
   a.ppr=a.nd?a.sc/a.nd*3:0;a.f9=a.f9d?a.f9s/a.f9d*3:0;a.cop=a.dAtt?a.dHit/a.dAtt*100:0;return a}
+// ---- back up / restore stats as a file ----
+async function saveFile(name,text,type){const f=new File([text],name,{type});
+  try{if(navigator.canShare&&navigator.canShare({files:[f]})){await navigator.share({files:[f],title:name});return true}}catch(e){if(e&&e.name==='AbortError')return false}
+  try{const a=document.createElement('a'),url=URL.createObjectURL(f);a.href=url;a.download=name;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),60000);toast('Saved to Downloads');return true}catch(e){toast("Couldn't save here",'bust');return false}}
+function doBackup(){const d=new Date(),pad=n=>String(n).padStart(2,'0'),name=`dartsapp-stats-${d.getFullYear()}${pad(d.getMonth()+1)}${pad(d.getDate())}.json`;
+  return saveFile(name,JSON.stringify({app:'dartsapp',v:1,saved:d.toISOString(),legs:DATA.legs,prac:DATA.prac}),'application/json').then(ok=>{if(ok){BK.last=Date.now();BK.n=bkCount();BK.snooze=0;store.set('dartsapp.bk',BK);bkCheck()}return ok})}
+$('#stBackup').onclick=()=>doBackup();
+// ---- a gentle monthly nudge to back up: only when there's something new, never mid-game, "Later" waits a week ----
+const BK_DAY=864e5,BK_EVERY=30*BK_DAY,BK_SNOOZE=7*BK_DAY,BK_MIN=5;
+function bkCount(){return DATA.legs.length+DATA.prac.length}
+const BK=store.get('dartsapp.bk',null)||{last:0,since:Date.now(),n:bkCount(),snooze:0};if(!store.get('dartsapp.bk',null))store.set('dartsapp.bk',BK);
+function bkDue(now=Date.now()){const from=Math.max(BK.last||0,BK.since||0);return bkCount()-(BK.n||0)>=BK_MIN&&now-from>=BK_EVERY&&now>=(BK.snooze||0)}
+function bkCheck(){const el=$('#bkNudge');if(!el)return;const due=bkDue();el.classList.toggle('hidden',!due);
+  if(due){const days=Math.round((Date.now()-Math.max(BK.last||0,BK.since||0))/BK_DAY),nw=bkCount()-(BK.n||0);
+    $('#bkNudgeWhy').textContent=(BK.last?`Last backup ${days} days ago`:`No backup yet`)+` · ${nw} new game${nw===1?'':'s'} since. A copy in Files keeps your stats safe if this device is lost or reset.`}}
+$('#bkNow').onclick=()=>doBackup();
+$('#bkLater').onclick=()=>{BK.snooze=Date.now()+BK_SNOOZE;store.set('dartsapp.bk',BK);bkCheck()};
+bkCheck();
+$('#stRestore').onclick=()=>$('#stFile').click();
+$('#stFile').onchange=async e=>{const file=e.target.files[0];e.target.value='';if(!file)return;
+  try{const j=JSON.parse(await file.text());if(!j||!Array.isArray(j.legs)||!Array.isArray(j.prac))throw 0;
+    // add what isn't here already, so restoring twice (or onto a device with its own games) never doubles anything up
+    const key=r=>JSON.stringify(r),have=new Set([...DATA.legs,...DATA.prac].map(key));let nl=0,np=0;
+    for(const l of j.legs)if(l&&l.player&&!have.has(key(l))){DATA.legs.push(l);have.add(key(l));nl++}
+    for(const q of j.prac)if(q&&q.player&&!have.has(key(q))){DATA.prac.push(q);have.add(key(q));np++}
+    DATA.legs.sort((a,b)=>(a.date||0)-(b.date||0));DATA.prac.sort((a,b)=>(a.date||0)-(b.date||0));saveData();S.st.player=null;renderStats();renderHome();
+    toast(nl+np?`Restored ${nl} leg${nl===1?'':'s'} and ${np} practice session${np===1?'':'s'}`:'Nothing new in that backup','',3500)}
+  catch(err){toast("That file isn't a Darts App stats backup",'bust',3000)}};
 function renderStats(){const names=stPlayers(),st=S.st;
   if(!st.player||!names.includes(st.player))st.player=names[0]||null;
   $('#stPlayer').innerHTML=names.length?names.map(n=>`<option ${n===st.player?'selected':''}>${esc(n)}</option>`).join(''):'<option>No stats yet</option>';
@@ -1138,6 +1457,32 @@ function learnCheck(tell){const S=LEARN.s,n=S.length;let raw=0,neu=0;
   S.forEach((q,i)=>{const want=scoreAt(q.tx,q.ty),[dx,dy]=learnShift(q.x,q.y,i),a=scoreAt(q.x,q.y),b=scoreAt(q.x+dx,q.y+dy),ok=s=>s[0]===want[0]&&s[1]===want[1];if(ok(a))raw++;if(ok(b))neu++});
   const was=LEARN.on;LEARN.on=n>=4&&neu>=raw+2;LEARN.stat={n,raw,neu};if(tell&&LEARN.on&&!was)toast('📷 Learned from your corrections — now adjusting','',3500)}
 function calQuality(H,pts,k=0){if(!H||pts.length<5)return null;let s=0;for(const p of pts){const[x,y]=applyH(H,...undK(p.u,p.v,k)),[tx,ty]=calDst(p.i);s+=Math.hypot(x-tx,y-ty)}return s/pts.length}
+/* --- Camera moved? Keep a small picture of the empty board from just after calibrating. Each time the board is clear,
+   compare: if the whole picture has slid, the camera was knocked, so offer to re-snap the calibration in one tap. */
+function calThumb(f){const W=cam.W,H=cam.Hh,w=W>>2,h=H>>2,d=new Uint8Array(w*h);
+  for(let y=0;y<h;y++)for(let x=0;x<w;x++){let s=0;for(let j=0;j<4;j++)for(let i=0;i<4;i++){const q=(((y<<2)+j)*W+(x<<2)+i)*4;s+=f[q]*77+f[q+1]*150+f[q+2]*29}d[y*w+x]=s>>12}return{w,h,d}}
+function thumbNorm(t){const n=t.d.length,o=new Float32Array(n);let m=0,v=0;for(let i=0;i<n;i++)m+=t.d[i];m/=n;for(let i=0;i<n;i++){const z=t.d[i]-m;v+=z*z}v=Math.sqrt(v/n)||1;for(let i=0;i<n;i++)o[i]=(t.d[i]-m)/v;return o}
+function thumbShift(A,B){const w=A.w,h=A.h,a=thumbNorm(A),b=thumbNorm(B),R=8,c=new Float64Array((2*R+1)**2);let best=1e18,bx=0,by=0;
+  for(let dy=-R;dy<=R;dy++)for(let dx=-R;dx<=R;dx++){let s=0,n=0;for(let y=R+2;y<h-R-2;y+=1)for(let x=R+2;x<w-R-2;x+=1){s+=Math.abs(b[y*w+x]-a[(y-dy)*w+x-dx]);n++}
+    s/=n;c[(dy+R)*(2*R+1)+dx+R]=s;if(s<best){best=s;bx=dx;by=dy}}
+  const at=(x,y)=>c[(y+R)*(2*R+1)+x+R],sub=(m,z,p)=>{const d=m-2*z+p;return d>0?.5*(m-p)/d:0};
+  const fx=Math.abs(bx)<R?sub(at(bx-1,by),best,at(bx+1,by)):0,fy=Math.abs(by)<R?sub(at(bx,by-1),best,at(bx,by+1)):0;
+  return{dx:(bx+fx)*4,dy:(by+fy)*4,err:best,edge:Math.abs(bx)===R||Math.abs(by)===R}}
+const b64u8=a=>{let s='';for(let i=0;i<a.length;i+=8192)s+=String.fromCharCode.apply(null,a.subarray(i,i+8192));return btoa(s)};
+const u8b64=t=>{const s=atob(t),a=new Uint8Array(s.length);for(let i=0;i<s.length;i++)a[i]=s.charCodeAt(i);return a};
+function calRefLoad(){const o=store.get(kk('dartsapp.calref'),null);cam.calRef=o&&o.w===(cam.W>>2)&&o.h===(cam.Hh>>2)?{w:o.w,h:o.h,d:u8b64(o.d)}:null}
+function calRefSet(f){const t=calThumb(f);cam.calRef=t;store.set(kk('dartsapp.calref'),{w:t.w,h:t.h,d:b64u8(t.d)})}
+function calRefReset(){cam.calRef=null;store.del(kk('dartsapp.calref'));hideMoved()}
+function calWatch(f,force){if(!cam.H||cam.teach||cam.stage!=='live'||!f)return;const now=Date.now();if(!force&&now-(cam.calChk||0)<12000)return;cam.calChk=now;
+  if(cam.calRef===undefined)calRefLoad();if(!cam.calRef){calRefSet(f);return}
+  const m=thumbShift(cam.calRef,calThumb(f)),amt=Math.hypot(m.dx,m.dy);rlog('drift',{dx:+m.dx.toFixed(1),dy:+m.dy.toFixed(1),err:+m.err.toFixed(2)});
+  if(amt>=4||m.edge){const mm=amt*450/cam.W;$('#cmAmt').textContent=m.edge?'a lot':`${Math.max(1,Math.round(mm))} mm`;$('#camMoved').classList.remove('hidden')}else hideMoved()}
+function hideMoved(){const e=document.getElementById('camMoved');if(e)e.classList.add('hidden')}
+$('#cmIgnore').onclick=()=>{hideMoved();if(cam.prev)calRefSet(cam.prev)};// this is how it is now
+$('#cmFix').onclick=()=>{if(!cam.on||!cam.pts){hideMoved();return}cam.calib=cam.pts.map(p=>({...p}));toast('Fixing calibration…','',1500);
+  setTimeout(()=>{const r=snapToBoard();if(r&&r.ok){const F=fitCal(cam.calib);if(F.H){cam.k=F.k;store.set(kk('dartsapp.K'),F.k);setH(F.H);cam.pts=cam.calib.map(p=>({...p}));store.set(kk('dartsapp.calpts'),cam.pts);
+      rlog('refixed',{k:F.k});calRefReset();cam.calWant=true;toast('Camera re-lined up ✓','',2500);return}}
+    hideMoved();toast("Couldn't fix it automatically — tap the camera, then Recal",'bust',4000)},80)};
 function setH(H,save=true){cam.H=H;cam.Hinv=H?inv3(H):null;if(H&&save)store.set(kk('dartsapp.H'),H);buildWork();cam.prev=cam.ref=cam.empty=null;cam.still=0}
 
 /* --- upgrade 1: analyse a zoomed-in crop of just the board at higher resolution --- */
@@ -1264,8 +1609,8 @@ function onGoneDart(P,f,thr){for(const o of cam.before||[]){if(!o.f||!o.P.length
     const a=alignTo(o.f,f);let same=0;for(const[x,y]of o.P){const q=(y*cam.W+x)*4;if(Math.abs(lum(f,q)-lum(a,q))<thr*.8)same++}if(same>=o.P.length*.7)return true}return false}
 // every dart the camera saw this visit has been pulled before the visit was full: the rest missed the board
 function takeout(f){const v=stripVisit(),n=v.past?0:v.darts.length;rlog('takeout',{seen:n});
-  if(n>0&&n<3&&S.mode){if(S.mode==='game')gameNext();else if(S.mode==='killer')killerNext();else pracNext();toast(`Darts pulled · ${3-n} not seen, counted as Miss — tap to fix`,'',4000)}
-  cam.awaitRemoval=false;cam.showLast=true;cam.foot=[];cam.before=[];cam.ref=cam.empty=f;cam.quiet=4;updateCamUI();renderPlay()}
+  if(n>0&&n<3&&S.mode){nextFor();toast(`Darts pulled · ${3-n} not seen, counted as Miss — tap to fix`,'',4000)}
+  cam.awaitRemoval=false;cam.showLast=true;cam.foot=[];cam.before=[];cam.ref=cam.empty=f;cam.quiet=4;calWatch(f);updateCamUI();renderPlay()}
 function boardLooksClear(e,f,thr,minDart){const b=bestBlob(e.ch);if(b&&b.length>=minDart)return false;
   for(const P of cam.foot||[])if(P.length&&!looksEmpty(P,f,thr))return false;return true}
 function looksEmpty(P,f,thr){let same=0;const e=cam.emptyA||cam.empty;for(const[x,y]of P){const q=(y*cam.W+x)*4;if(Math.abs(lum(f,q)-lum(e,q))<thr*.8)same++}return same/P.length>.65}
@@ -1332,7 +1677,7 @@ function nearestAlt(x,y,thr){const r=Math.hypot(x,y);let best=thr,alt=null;
   return alt}
 let ccT;
 function hideCC(){$('#ccall').classList.add('hidden');clearTimeout(ccT)}
-function offerCloseCall(d,x,y){if(!cam.close)return;if(S.mode==='game'&&(S.match.pending||S.match.over))return;
+function offerCloseCall(d,x,y){if(!cam.close)return;if(S.mode==='game'&&(S.match.pending||S.match.over))return;if(S.mode==='party'&&S.party.over)return;
   const alt=nearestAlt(x,y,3);if(!alt)return;const[n2,m2]=scoreAt(alt[0],alt[1]);if(n2===d.n&&m2===d.m)return;
   const d2=mkDart(n2,m2,alt[0],alt[1],false),idx=stripVisit().darts.indexOf(d);if(idx<0)return;
   $('#ccA').textContent=d.label;$('#ccB').textContent=d2.label;$('#ccA').className='m'+(d.m||0);$('#ccB').className='m'+(d2.m||0);
@@ -1382,7 +1727,7 @@ async function recDone(){const type=(REC.mr&&REC.mr.mimeType)||REC.mime||'video/
     settings:{auto:cam.auto,sens:cam.sens,tip:cam.tip,close:cam.close},events:REC.log};
   const stamp=new Date().toISOString().slice(0,16).replace(/[-:T]/g,'');
   const files=[{name:'clip.'+ext,blob:video},{name:'log.json',blob:new Blob([JSON.stringify(meta,null,1)],{type:'application/json'})}];if(snap)files.push({name:'board.jpg',blob:snap});
-  toast('Packing the test clip…');const zip=await makeZip(files);REC.file=new File([zip],`jimsbar-test-${stamp}.zip`,{type:'application/zip'});
+  toast('Packing the test clip…');const zip=await makeZip(files);REC.file=new File([zip],`dartsapp-test-${stamp}.zip`,{type:'application/zip'});
   const dets=REC.log.filter(e=>e.type==='det').length,miss=REC.log.filter(e=>e.type==='input').length,fix=REC.log.filter(e=>e.type==='fix').length;
   $('#mbox').innerHTML=`<div class="mhead"><small>Test clip ready</small><h3 class="ol">${fmtT(REC.dur)}</h3></div>
    <div class="mbody" style="font-size:17px">${(REC.file.size/1048576).toFixed(1)} MB · ${dets} camera darts · ${miss} entered by hand · ${fix} corrected<br><br>
@@ -1436,7 +1781,7 @@ function renderCF(){const st=cam.stage;$('#cfCal').classList.toggle('hidden',!(s
     $('#cfTxt').innerHTML=`<b>Check the gold rings sit on your board.</b> Drag any point to fine-tune.<div class="gnudge">Grid size <button data-g="s-">−</button><button data-g="s+">+</button> Turn <button data-g="r-">↺</button><button data-g="r+">↻</button></div>${cam.snapMsg?`<div style="margin-top:4px;color:#5fd39a">${cam.snapMsg}</div>`:''}<div style="margin-top:4px">${qualityText(F.q)}${Math.abs(F.k)>=.01?`<br><span style="color:var(--goldl)">Lens bend corrected (${(Math.abs(F.k)*100).toFixed(0)}%)</span>`:''}</div>`;
     $('#cfCalBtns').innerHTML=`<button id="cbRedo">Redo all</button><button id="cbSnap">Snap to board</button><button id="cbGood" class="go">Looks good</button>`;
     $('#cbRedo').onclick=()=>{cam.calib=[];cam.stage='points';renderCF()};$('#cbSnap').onclick=()=>{cam.snapMsg='Fine-tuning to your board…';renderCF();setTimeout(runSnap,60)};
-    $('#cbGood').onclick=()=>{const F=fitCal(cam.calib),H=F.H;if(!H){toast('Points look wrong — redo','bust');return}cam.k=F.k;store.set(kk('dartsapp.K'),F.k);rlog('calibrated',{pts:cam.calib,H,k:F.k,q:F.q});setH(H);LEARN.s=[];learnSave();learnCheck(false);cam.pts=cam.calib.map(p=>({...p}));store.set(kk('dartsapp.calpts'),cam.pts);toast('Calibrated ✓');minimise()};
+    $('#cbGood').onclick=()=>{const F=fitCal(cam.calib),H=F.H;if(!H){toast('Points look wrong — redo','bust');return}cam.k=F.k;store.set(kk('dartsapp.K'),F.k);rlog('calibrated',{pts:cam.calib,H,k:F.k,q:F.q});setH(H);calRefReset();cam.calWant=true;LEARN.s=[];learnSave();learnCheck(false);cam.pts=cam.calib.map(p=>({...p}));store.set(kk('dartsapp.calpts'),cam.pts);toast('Calibrated ✓');minimise()};
     cfMsg(null);
   }else if(st==='teach'){renderTeach()}
   else{cfMsg(cam.auto?'Watching for darts. Tap a dart on the video to score it by hand.':'Auto-detect is off. Tap each dart on the video to score it.');renderCFVisit()}
@@ -1500,7 +1845,7 @@ function finishTeach(){const t=cam.teach;if(t.reading&&TEACH[t.i]){const q=t.rea
 function updateCamUI(){const on=cam.on&&cam.view==='mini';$('#camBar').classList.toggle('hidden',!on);$('#camBtn').classList.toggle('live',cam.on);
   if(on){$('#cstatT').textContent=cam.auto?'CAMERA · AUTO':'CAMERA · MANUAL';$('#cstat').textContent=cam.awaitRemoval?'Pull your darts':cam.auto?'Watching for darts':'Tap Expand to score on video'}
   const b=cam.on&&cam.awaitRemoval&&S.mode;$('#banner').classList.toggle('hidden',!b);
-  if(b){let next='';if(S.mode==='game'){const m=S.match,st=deriveLeg(m);next=' — '+m.players[st.cur].name+' next'}$('#bannerTxt').textContent='Pull your darts'+next}
+  if(b){let next='';if(S.mode==='game'){const m=S.match,st=deriveLeg(m);next=' — '+m.players[st.cur].name+' next'}else if(S.mode==='party'&&S.party.players.length>1){next=' — '+S.party.players[pDerive(S.party).cur]+' next'}else if(S.mode==='killer'){const st=kDerive(S.killer);next=' — '+S.killer.players[st.cur]+' next'}$('#bannerTxt').textContent='Pull your darts'+next}
   if(cam.view==='full')renderCFVisit();requestAnimationFrame(fitVideo)}
 function lockExposure(){try{const tr=cam.stream&&cam.stream.getVideoTracks()[0];if(!tr||!tr.getCapabilities)return;const c=tr.getCapabilities(),adv={};
   if(c.exposureMode&&c.exposureMode.includes('manual'))adv.exposureMode='manual';if(c.whiteBalanceMode&&c.whiteBalanceMode.includes('manual'))adv.whiteBalanceMode='manual';if(c.focusMode&&c.focusMode.includes('manual'))adv.focusMode='manual';
@@ -1516,9 +1861,9 @@ async function camStart(){
   cam.k=calGet('dartsapp.K')||0;cam.H=calGet('dartsapp.H');cam.Hinv=cam.H?inv3(cam.H):null;cam.pts=loadPts();cam.corr=calGet('dartsapp.corr');learnLoad();listCams();
   vid.srcObject=cam.stream;try{await vid.play()}catch(e){}
   await new Promise(r=>{if(vid.videoWidth)r();else vid.onloadedmetadata=()=>r()});
-  cam.on=true;setH(cam.H,false);setTimeout(lockExposure,2500);
+  cam.on=true;setH(cam.H,false);cam.calRef=undefined;setTimeout(lockExposure,2500);
   clearInterval(cam.timer);cam.timer=setInterval(tick,250);cancelAnimationFrame(cam.raf);cam.raf=requestAnimationFrame(draw);return true}
-function camStop(){if(REC.on)recStop();clearInterval(cam.timer);cancelAnimationFrame(cam.raf);if(cam.stream)cam.stream.getTracks().forEach(t=>t.stop());cam.stream=null;cam.on=false;cam.awaitRemoval=false;cam.view='none';cam.stage=null;cam.teach=null;vid.srcObject=null;$('#camFull').classList.add('hidden');hideCC();updateCamUI()}
+function camStop(){hideMoved();if(REC.on)recStop();clearInterval(cam.timer);cancelAnimationFrame(cam.raf);if(cam.stream)cam.stream.getTracks().forEach(t=>t.stop());cam.stream=null;cam.on=false;cam.awaitRemoval=false;cam.view='none';cam.stage=null;cam.teach=null;vid.srcObject=null;$('#camFull').classList.add('hidden');hideCC();updateCamUI()}
 function afterCamReady(){cam.calib=cam.pts?cam.pts.map(p=>({...p})):[];cam.stage=cam.calib.length>=4?'adjust':'points';renderCF()}
 $('#camBtn').onclick=async()=>{if(cam.on){openFull('live');return}cam.calib=[];openFull('points');if(await camStart())afterCamReady()};
 async function listCams(){const sel=$('#camDev');try{const all=(await navigator.mediaDevices.enumerateDevices()).filter(d=>d.kind==='videoinput');
@@ -1591,12 +1936,15 @@ function tick(){if(!cam.on||!cam.H||!cam.mask||vid.readyState<2)return;const tea
   if(REC.on&&performance.now()-(REC.lastM||0)>1000){REC.lastM=performance.now();rlog('m',{mo:+mo.toFixed(2),noise:+cam.noise.toFixed(2),mThr:+motionThr.toFixed(2),thr:+thr.toFixed(1),still:cam.still,await:cam.awaitRemoval})}
   if(mo>motionThr){cam.still=0;return}cam.still++;if(cam.still<2||(cam.still-2)%3!==0)return;
   const waiting=teaching?cam.teach.waiting:cam.awaitRemoval;
+  if(cam.still>=8&&!waiting&&!(cam.before&&cam.before.length)&&cam.quiet<=0&&(cam.calWant||cam.calRef===undefined)){cam.calWant=false;calWatch(f,true)}
   const minDart=Math.max(cam.N*.0015,Math.max(6,cam.N*.0004)*2);if(cam.quiet>0){cam.ref=f;return}// just cleared: let the hand get away first
   cam.emptyA=cam.empty?alignTo(cam.empty,f):null;
-  if(waiting){const e=changeMask(f,cam.emptyA,thr);if(e.c<Math.max(8,cam.N*.002)||boardLooksClear(e,f,thr,minDart)||(!teaching&&dartsGone(f,thr))){cam.foot=[];cam.before=[];cam.quiet=4;cam.ref=cam.empty=f;rlog('cleared',{auto:true});
-      if(teaching){cam.teach.waiting=false;renderTeach()}else{cam.awaitRemoval=false;cam.showLast=true;updateCamUI();renderPlay();toast('Darts cleared · you can still fix the last visit until the next dart',"",3500)}}else cam.ref=f;return}
+  if(waiting){const e=changeMask(f,cam.emptyA,thr);if(e.c<Math.max(8,cam.N*.002)||boardLooksClear(e,f,thr,minDart)||(!teaching&&dartsGone(f,thr))){cam.foot=[];cam.before=[];cam.quiet=4;cam.ref=cam.empty=f;rlog('cleared',{auto:true});calWatch(f);
+      if(teaching){cam.teach.waiting=false;renderTeach()}else{cam.awaitRemoval=false;cam.showLast=true;updateCamUI();renderPlay();toast('Darts cleared · you can still fix the last visit until the next dart',"",3500)}}else{cam.ref=f;if(cam.still>=14)calWatch(f)}return}
   if(!teaching&&!cam.auto){cam.ref=f;return}
   const r=changeMask(f,alignTo(cam.ref,f),thr),minPx=Math.max(6,cam.N*.0004);
+  // most of the picture changed at once: the camera was knocked (or the light changed), not a dart
+  if(r.c>cam.N*.2){rlog('skip',{why:'bigchange',px:r.c});cam.ref=f;calWatch(f,true);return}
   if(r.c<minPx||r.c>cam.N*.25){rlog('skip',{why:r.c<minPx?'small':'big',px:r.c,minPx:+minPx.toFixed(0)});cam.ref=f;return}
   // a flight that is still swinging slowly can slip under the motion test: wait until the new blob holds still
   {const b0=bestBlob(r.ch),old=cam.hist&&cam.hist[1];if(b0&&old&&b0.length>=minPx){let mv=0;for(const[a,b]of b0){const q=(b*cam.W+a)*4;if(Math.abs(lum(f,q)-lum(old,q))>thr)mv++}
@@ -1636,7 +1984,8 @@ addEventListener('resize',()=>requestAnimationFrame(fitVideo));
 
 
 /* ================= TITLE MUSIC: 'The Mountain', embedded below ================= */
-const MUSIC={on:false,el:null,playing:false,avail:false,fade:null};// no music in this version
+const MUSIC={on:false,el:null,playing:false,avail:false,fade:null};
+// no music in this version
 const MUSIC_SRC='';// theme tune built into this file
 function musicEl(){if(!MUSIC.el){const a=new Audio(MUSIC_SRC.startsWith('data:')?MUSIC_SRC:'music.mp3');a.loop=true;a.preload='auto';a.addEventListener('error',()=>{MUSIC.avail=false;MUSIC.playing=false;renderMusic()});MUSIC.el=a}return MUSIC.el}
 MUSIC.vol=store.get('dartsapp.musicVol',55);MUSIC.level=0;
@@ -1658,18 +2007,14 @@ $('#musicBtn2').onclick=e=>$('#musicBtn').onclick(e);
 // check the file exists so the button only shows when there is music to play
 renderMusic();
 
-
 /* ================= COLOUR SCHEMES ================= */
-function TC(n){return getComputedStyle(document.documentElement).getPropertyValue('--'+n).trim()||'#fff'}
 const THEME={cur:store.get('dartsapp.theme','blues')};
-function applyTheme(t){THEME.cur=t==='villa'?'villa':'blues';document.documentElement.dataset.theme=THEME.cur;store.set('dartsapp.theme',THEME.cur);
-  const m=document.querySelector('meta[name=theme-color]');if(m)m.content=TC('black');
-  $$('#themeSeg button').forEach(b=>b.classList.toggle('on',b.dataset.v===THEME.cur));
-  try{if(typeof renderStats==='function'&&!$('#vStats').classList.contains('hidden'))renderStats()}catch(e){}}
+function applyTheme(t){THEME.cur=t==='villa'?'villa':'blues';document.documentElement.dataset.theme=THEME.cur;store.set('dartsapp.theme',THEME.cur);const m=document.querySelector('meta[name=theme-color]');if(m)m.content=TC('black');$$('#themeSeg button').forEach(b=>b.classList.toggle('on',b.dataset.v===THEME.cur));try{if(typeof renderStats==='function'&&!$('#vStats').classList.contains('hidden'))renderStats()}catch(e){}}
 $$('#themeSeg button').forEach(b=>b.onclick=()=>applyTheme(b.dataset.v));
 applyTheme(THEME.cur);
+
 /* ================= FRONT PAGE ================= */
-function leaveSplash(tab){const sp=$('#splash');setHome(tab||'play');requestAnimationFrame(fitAll);sp.classList.add('go');setTimeout(()=>{sp.classList.add('hidden');sp.classList.remove('go')},450)}
+function leaveSplash(tab){const sp=$('#splash');setHome(tab||'play');window.scrollTo(0,0);requestAnimationFrame(fitAll);sp.classList.add('go');setTimeout(()=>{sp.classList.add('hidden');sp.classList.remove('go')},450)}
 function showSplash(){$('#splash').classList.remove('hidden');requestAnimationFrame(fitAll);if(MUSIC.on&&MUSIC.el&&MUSIC.el.played&&MUSIC.el.played.length)musicStart();else renderMusic()}
 $('#enterBtn').onclick=()=>{if(MUSIC.on)musicStart();leaveSplash('play')};
 $('.brand').onclick=showSplash;
@@ -1680,9 +2025,11 @@ function fitAll(){['.fp-title small','.fp-title b','#enterBtn','.brand span','#n
 addEventListener('resize',()=>requestAnimationFrame(fitAll));
 try{document.fonts&&document.fonts.ready.then(fitAll)}catch(e){}
 /* boot */
-setHome('play');showSplash();requestAnimationFrame(fitAll);
+if(TVM)tvBoot();else{setHome('play');showSplash();requestAnimationFrame(fitAll)}
+// offline play: keep a copy of the app on the device (only when served from the web, e.g. GitHub Pages)
+if('serviceWorker' in navigator&&location.protocol==='https:')addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(()=>{}));
 // try to start the title music straight away (laptops usually allow it; phones start it on the first tap)
-if(MUSIC.on)setTimeout(musicStart,300);
+if(MUSIC.on&&!TVM)setTimeout(musicStart,300);
 </script>
 </body>
 </html>

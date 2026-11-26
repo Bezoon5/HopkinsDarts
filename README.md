@@ -21,7 +21,8 @@ Android (Chrome)
 
 What it does
 
-	•	Games: X01 (501, 301 or custom; double out; legs) and Killer (2–8 players).
+	•	Games: X01 (501, 301 or custom; double out; legs), Killer (2–8 players), Cricket, Around the Clock and Shanghai.
+	•	TV scoreboard: tap TV scoreboard under Start Game for a big live scoreboard in a second window (laptop on HDMI, or iPad with Stage Manager). Turn an iPad sideways for a scoreboard-and-keypad layout that works well with AirPlay mirroring.
 	•	Practice mode with targets.
 	•	Stats: PPR, first 9, checkout %, 60+/100+/140+/180 and heat maps.
 	•	Checkout guide for 170 and under, plus a full checkout chart.
@@ -31,4 +32,6 @@ What it does
 	•	Blues: royal blue #003798 / #0000FF and white
 	•	Villans: claret #670E36, sky blue #95BFE5, yellow #FEE505 and white
 
-Stats are saved in the browser on each device. They don't sync between devices, and clearing Safari's website data deletes them.
+Works offline: once opened with internet, the app keeps a copy and plays without Wi-Fi.
+
+Stats are saved in the browser on each device. Back up stats on the Stats tab (a gentle reminder appears about once a month). They don't sync between devices, and clearing Safari's website data deletes them.
