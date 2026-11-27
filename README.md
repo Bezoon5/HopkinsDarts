@@ -21,7 +21,7 @@ Android (Chrome)
 
 What it does
 
-	•	Games: X01 (501, 301 or custom; double out; legs or sets), Killer (2–8 players), Cricket, Around the Clock, Shanghai, and Knockout nights (3–16 players, X01 or Cricket matches, draw on the TV). Stats for X01, practice, Cricket and Shanghai.
+	•	Games: X01 (501, 301 or custom; double out; legs or sets), Killer (2–8 players), Cricket, Around the Clock, Shanghai, and Knockout nights (3–16 players, X01 or Cricket matches, draw on the TV). Stats for X01, practice, Cricket, Shanghai, Around the Clock and Killer.
 	•	Handicap start scores, a bull-off for the throw, head-to-head records, and optional voice scoring (tap the microphone and say "treble twenty", "sixty", "next").
 	•	TV scoreboard: on the TV's web browser (or a laptop or tablet) open https://bezoon5.github.io/HopkinsDarts/tv.html (a light page made for TV browsers), then scan its QR code with the phone camera, or tap the TV button (top left of the home screen) and type its 6-digit code. The TV follows the game live and remembers the code. Turn an iPad or iPhone sideways for a scoreboard-and-keypad layout that works well with AirPlay mirroring.
 	•	Practice mode with targets.
