@@ -29,8 +29,8 @@ What it does
 	•	Checkout guide for 170 and under, plus a full checkout chart.
 	•	Scoring: tap the keypad, tap the dartboard, or use a camera.
 	•	Caller voice with a choice of voices and a volume control.
-	•	Twenty-three colour schemes, in groups: switch under Colours in Settings (the gear).
-	•	Teams: Blues (royal blue #003798 / #0000FF and white), Villans (claret #670E36, sky blue #95BFE5, yellow #FEE505), 49ers (the original Jim's Bar red #AA0000, gold #B3995D, black and cream), Irish (green #169B62, white, orange #FF883E), Union Jack (blue #012169, red #C8102E and white, with a faint flag)
+	•	Twenty-four colour schemes, in groups: switch under Colours in Settings (the gear).
+	•	Teams: Blues (royal blue #003798 / #0000FF and white), Villans (claret #670E36, sky blue #95BFE5, yellow #FEE505), 49ers (the original Jim's Bar red #AA0000, gold #B3995D, black and cream), Gunners (red #EF0107 / #DB0007, gold #9C824A, blue #023474, white), Irish (green #169B62, white, orange #FF883E), Union Jack (blue #012169, red #C8102E and white, with a faint flag)
 	•	Players: Lime (inspired by Michael van Gerwen), Neon (neon yellow #E6FF00 / #FFF000, electric purple #6A0DAD / #551A8B, black #111111), Snakeskin (Peter Wright), Bling (Bobby George), Dutch Orange (Raymond van Barneveld), Iceman (Gerwyn Price), Pink Palace (Fallon Sherrock), Tartan (Jocky Wilson and Gary Anderson)
 	•	Venues: Oche Classic (mahogany, brass and cream), Ally Pally (stage spotlights on deep red and black), Snooker Hall (baize green, walnut and gold), Chalk (chalk on a blackboard)
 	•	Retro and fun: Arcade, Teletext, Vaporwave, Christmas (with falling snow), Coral Coast (inspired by GTA VI: coral #FF4F7A, electric violet #8B3DFF, deep lagoon #0F6B8A, tangerine #FF8A5B, mulberry #7A4F7D), Retro 80s (inspired by Eric Bristow)
