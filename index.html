@@ -15,8 +15,8 @@
 <title>Darts App</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Bebas+Neue&family=Cabin+Sketch:wght@700&family=Zilla+Slab:wght@500;600;700&display=swap" rel="stylesheet">
-<script>try{var t=JSON.parse(localStorage.getItem("dartsapp.theme"));t=({"green":"lime"})[t]||t;if(["villa","chalk","neon","irish","coral","lime","snake","bling","dutch","ice","pink","tartan","retro"].indexOf(t)>=0)document.documentElement.dataset.theme=t}catch(e){}</script>
+<link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Bebas+Neue&family=Cabin+Sketch:wght@700&family=Pixelify+Sans:wght@500&family=VT323&family=Zilla+Slab:wght@500;600;700&display=swap" rel="stylesheet">
+<script>try{var t=JSON.parse(localStorage.getItem("dartsapp.theme"));t=({"green":"lime"})[t]||t;if(["villa","chalk","neon","irish","coral","lime","snake","bling","dutch","ice","pink","tartan","retro","oche","pally","baize","arcade","ceefax","vapor","xmas"].indexOf(t)>=0)document.documentElement.dataset.theme=t}catch(e){}</script>
 <style>
 :root{--red:#003798;--red2:#002A75;--red3:#001E55;--gold:#FFFFFF;--goldl:#A8C1FF;--goldd:#7F9BD6;--black:#00163D;--char:#08214F;--char2:#0E2C63;--cream:#FFFFFF;--cream2:#E6EDFA;--ink:#00163D;--mute:#5F79A8;--rule:#C9D6EE;--sub1:#A9BBDD;--sub2:#93A7CC;--sub3:#BFCDE8;--olin:#0000FF;--dbl:#C2D3FF;--treb:#8FB0FF;--gold-rgb:255,255,255;--black-rgb:0,22,61;--goldl-rgb:168,193,255}
 html[data-theme="villa"]{--red:#670E36;--red2:#510B2B;--red3:#3B0820;--gold:#95BFE5;--goldl:#FEE505;--goldd:#6F98C0;--black:#24061A;--char:#330A24;--char2:#430E2F;--cream:#FFFFFF;--cream2:#F3E9EE;--ink:#24061A;--mute:#8A5F76;--rule:#E3CFD9;--sub1:#CDB0BF;--sub2:#B894A7;--sub3:#DCC4D0;--olin:#FEE505;--dbl:#95BFE5;--treb:#FEE505;--gold-rgb:149,191,229;--black-rgb:36,6,26;--goldl-rgb:254,229,5}
@@ -32,6 +32,13 @@ html[data-theme="ice"]{--red:#1F6E96;--red2:#185A7B;--red3:#124660;--gold:#E6F6F
 html[data-theme="pink"]{--red:#E5007E;--red2:#B80065;--red3:#8A004C;--gold:#FFFFFF;--goldl:#FF5CB8;--goldd:#A0527D;--black:#0D0D0D;--char:#171717;--char2:#222222;--cream:#FFFFFF;--cream2:#FDE8F3;--ink:#0D0D0D;--mute:#8A5A74;--rule:#F0D3E3;--sub1:#DDB2CA;--sub2:#CC9AB6;--sub3:#E6C3D7;--olin:#0D0D0D;--dbl:#FF9ACF;--treb:#FF5CB8;--gold-rgb:255,255,255;--black-rgb:13,13,13;--goldl-rgb:255,92,184}
 html[data-theme="tartan"]{--red:#005EB8;--red2:#004C96;--red3:#003A73;--gold:#FFFFFF;--goldl:#FF6B6B;--goldd:#6F8FB3;--black:#0B1D33;--char:#0F2742;--char2:#14304F;--cream:#FFFFFF;--cream2:#E8EEF6;--ink:#0B1D33;--mute:#5A6F8C;--rule:#D0DAE6;--sub1:#B0BED0;--sub2:#9AABC2;--sub3:#C1CDDB;--olin:#C8102E;--dbl:#9CC9F0;--treb:#FF6B6B;--gold-rgb:255,255,255;--black-rgb:11,29,51;--goldl-rgb:255,107,107}
 html[data-theme="retro"]{--red:#C8102E;--red2:#A00D25;--red3:#780A1C;--gold:#FFFFFF;--goldl:#F2E8D5;--goldd:#8A8A8A;--black:#111111;--char:#1A1A1A;--char2:#252525;--cream:#FFFFFF;--cream2:#F2E8D5;--ink:#111111;--mute:#6E6E6E;--rule:#DDDDDD;--sub1:#BDBDBD;--sub2:#A8A8A8;--sub3:#CBCBCB;--olin:#111111;--dbl:#F4A3A3;--treb:#FF5A5A;--gold-rgb:255,255,255;--black-rgb:17,17,17;--goldl-rgb:242,232,213}
+html[data-theme="oche"]{--red:#5A2E1A;--red2:#4A2515;--red3:#3A1C10;--gold:#C9A45C;--goldl:#E8C987;--goldd:#8E7445;--black:#1E120B;--char:#26170E;--char2:#301D12;--cream:#F6EBD7;--cream2:#EBDCC0;--ink:#1E120B;--mute:#7D6449;--rule:#DCCBAA;--sub1:#C7B38F;--sub2:#B39E79;--sub3:#D2C09E;--olin:#3A1C10;--dbl:#E8C987;--treb:#E8C987;--gold-rgb:201,164,92;--black-rgb:30,18,11;--goldl-rgb:232,201,135}
+html[data-theme="pally"]{--red:#8B0A14;--red2:#6E0810;--red3:#52060C;--gold:#FFFFFF;--goldl:#FFE9A8;--goldd:#8A6A6E;--black:#0A0A0A;--char:#141414;--char2:#1E1E1E;--cream:#FFFFFF;--cream2:#F4E9E9;--ink:#0A0A0A;--mute:#7A5A5D;--rule:#E5D3D4;--sub1:#CDB3B5;--sub2:#B89A9D;--sub3:#D9C3C5;--olin:#0A0A0A;--dbl:#FFE9A8;--treb:#FF6B6B;--gold-rgb:255,255,255;--black-rgb:10,10,10;--goldl-rgb:255,233,168}
+html[data-theme="baize"]{--red:#5B3A22;--red2:#4A2F1B;--red3:#3A2415;--gold:#D4AF37;--goldl:#F1D27A;--goldd:#8C7A4A;--black:#0E1A10;--char:#1A2E1D;--char2:#22382A;--cream:#F5F0E1;--cream2:#E8E0C8;--ink:#0E1A10;--mute:#6E6A4F;--rule:#D9D2B8;--sub1:#C2BB9C;--sub2:#ADA683;--sub3:#CEC8AB;--olin:#3A2415;--dbl:#F1D27A;--treb:#F1D27A;--gold-rgb:212,175,55;--black-rgb:14,26,16;--goldl-rgb:241,210,122}
+html[data-theme="arcade"]{--red:#D7263D;--red2:#A81D30;--red3:#7A1523;--gold:#FFE600;--goldl:#00E5FF;--goldd:#7A6E00;--black:#050505;--char:#111111;--char2:#1C1C1C;--cream:#FFFFFF;--cream2:#E6FBFF;--ink:#050505;--mute:#555555;--rule:#DDDDDD;--sub1:#BBBBBB;--sub2:#A5A5A5;--sub3:#CCCCCC;--olin:#D7263D;--dbl:#00E5FF;--treb:#FFE600;--gold-rgb:255,230,0;--black-rgb:5,5,5;--goldl-rgb:0,229,255}
+html[data-theme="ceefax"]{--red:#0000FF;--red2:#0000CC;--red3:#000099;--gold:#FFFF00;--goldl:#00FFFF;--goldd:#00A000;--black:#000000;--char:#000000;--char2:#111111;--cream:#FFFFFF;--cream2:#E6FFFF;--ink:#000000;--mute:#0000AA;--rule:#CCCCFF;--sub1:#AAAAFF;--sub2:#8888EE;--sub3:#BBBBFF;--olin:#0000FF;--dbl:#00FFFF;--treb:#FFFF00;--gold-rgb:255,255,0;--black-rgb:0,0,0;--goldl-rgb:0,255,255}
+html[data-theme="vapor"]{--red:#8E6CC4;--red2:#7A5AB0;--red3:#65489A;--gold:#FFB3D9;--goldl:#9FF2D4;--goldd:#9A7FBF;--black:#3B2A55;--char:#463463;--char2:#52406F;--cream:#FFFFFF;--cream2:#F6EEFF;--ink:#2E2142;--mute:#7E6A9A;--rule:#E5DAF2;--sub1:#CDBEE3;--sub2:#B9A7D3;--sub3:#D8CCEA;--olin:#E0569E;--dbl:#9FF2D4;--treb:#FFB3D9;--gold-rgb:255,179,217;--black-rgb:59,42,85;--goldl-rgb:159,242,212}
+html[data-theme="xmas"]{--red:#B3001B;--red2:#8F0016;--red3:#6B0010;--gold:#D4AF37;--goldl:#FFD966;--goldd:#8C7A3A;--black:#0F2A1A;--char:#143521;--char2:#1A4129;--cream:#FFFDF7;--cream2:#F3EBD6;--ink:#0F2A1A;--mute:#6B6A4A;--rule:#E3DCC4;--sub1:#CBC3A6;--sub2:#B6AE8F;--sub3:#D6CFB4;--olin:#0F5132;--dbl:#7CCB8F;--treb:#FFD966;--gold-rgb:212,175,55;--black-rgb:15,42,26;--goldl-rgb:255,217,102}
 :root{
   --fd:"Alfa Slab One",Rockwell,"American Typewriter",Georgia,serif;
   --ft:"Zilla Slab",Rockwell,"American Typewriter",Georgia,serif;
@@ -616,8 +623,40 @@ html[data-theme="tartan"] #home{background:repeating-linear-gradient(90deg,trans
 /* retro 80s: scoreboard lettering */
 html[data-theme="retro"]{--fd:"Bebas Neue","Alfa Slab One",Impact,sans-serif}
 html[data-theme="retro"] .ol{letter-spacing:.04em}
-/* colour picker: 2 columns */
-#themeSeg{display:grid;grid-template-columns:1fr 1fr}#themeSeg button{border-right:none;font-size:clamp(17px,5vw,24px);line-height:1.1;padding:10px 4px 12px}#themeSeg button:nth-child(odd){border-right:2px solid var(--black)}#themeSeg button:nth-child(-n+12){border-bottom:2px solid var(--black)}
+/* oche classic: mahogany grain */
+html[data-theme="oche"] #home{background:repeating-linear-gradient(92deg,rgba(0,0,0,.18) 0 2px,transparent 2px 9px,rgba(255,200,140,.05) 9px 11px,transparent 11px 23px),linear-gradient(180deg,#6A3720,#4A2515);background-color:#5A2E1A}
+html[data-theme="oche"] .gcard{box-shadow:0 0 0 2px var(--gold) inset,0 0 0 4px #8E7445 inset}
+/* ally pally: spotlights on the stage, spotlight on the thrower */
+html[data-theme="pally"] #home{background:radial-gradient(ellipse 45% 60% at 22% -8%,rgba(255,240,205,.32),transparent 70%),radial-gradient(ellipse 45% 60% at 78% -8%,rgba(255,240,205,.32),transparent 70%),radial-gradient(ellipse at 50% 120%,rgba(0,0,0,.55),transparent 60%),var(--red)}
+html[data-theme="pally"] .pn.on{background:radial-gradient(ellipse 80% 90% at 50% 0%,rgba(255,240,205,.42),transparent 70%),var(--red)}
+/* snooker hall: baize table */
+html[data-theme="baize"] #home{background:radial-gradient(ellipse at 50% 35%,#2C8A49 0%,#1E6B37 45%,#145127 100%);background-color:#1E6B37}
+html[data-theme="baize"] .gcard{box-shadow:0 0 0 2px var(--gold) inset,0 0 0 5px var(--red)}
+/* arcade: scanlines and pixel lettering */
+html[data-theme="arcade"]{--fd:"Pixelify Sans","Alfa Slab One",monospace}
+html[data-theme="arcade"] #home{background:repeating-linear-gradient(0deg,rgba(255,255,255,.035) 0 2px,transparent 2px 4px),radial-gradient(ellipse at 50% 40%,#1A1030,#050505 75%);background-color:#050505}
+html[data-theme="arcade"] .ol{filter:drop-shadow(0 0 5px rgba(0,229,255,.6))}
+/* teletext: square blocks, terminal lettering */
+html[data-theme="ceefax"]{--fd:"VT323","Alfa Slab One",monospace}
+html[data-theme="ceefax"] *{border-radius:0!important}
+html[data-theme="ceefax"] #home{background:#000}
+html[data-theme="ceefax"] .ol{letter-spacing:.04em}
+/* vaporwave: soft pastel gradient */
+html[data-theme="vapor"] #home{background:linear-gradient(160deg,#FFB3D9 0%,#C7A6F0 50%,#9FF2D4 100%);background-color:#C7A6F0}
+html[data-theme="vapor"] .linkbtn{color:var(--ink)}
+/* christmas: snow falling on the home screen */
+html[data-theme="xmas"] #home{position:relative;z-index:0}
+html[data-theme="xmas"] #home::before,html[data-theme="xmas"] #home::after{content:"";position:fixed;left:0;right:0;z-index:-1;pointer-events:none}
+html[data-theme="xmas"] #home::before{top:-240px;height:calc(100% + 240px);background:radial-gradient(circle at 8% 12%,rgba(255,255,255,0.95) 0 2.6px,transparent 3.3px),radial-gradient(circle at 37% 41%,rgba(255,255,255,0.8) 0 1.8px,transparent 2.5px),radial-gradient(circle at 64% 9%,rgba(255,255,255,0.9) 0 2.2px,transparent 2.9px),radial-gradient(circle at 88% 57%,rgba(255,255,255,0.95) 0 2.8px,transparent 3.5px),radial-gradient(circle at 19% 73%,rgba(255,255,255,0.85) 0 2px,transparent 2.7px),radial-gradient(circle at 52% 88%,rgba(255,255,255,0.9) 0 2.4px,transparent 3.1px),radial-gradient(circle at 76% 30%,rgba(255,255,255,0.7) 0 1.5px,transparent 2.2px);background-size:240px 240px;animation:snowFall 11s linear infinite}
+html[data-theme="xmas"] #home::after{top:-180px;height:calc(100% + 180px);background:radial-gradient(circle at 14% 30%,rgba(255,255,255,0.6) 0 1.4px,transparent 2.1px),radial-gradient(circle at 45% 64%,rgba(255,255,255,0.5) 0 1.1px,transparent 1.8px),radial-gradient(circle at 71% 18%,rgba(255,255,255,0.65) 0 1.6px,transparent 2.3px),radial-gradient(circle at 90% 82%,rgba(255,255,255,0.55) 0 1.2px,transparent 1.9px),radial-gradient(circle at 28% 93%,rgba(255,255,255,0.6) 0 1.5px,transparent 2.2px);background-size:180px 180px;animation:snowFall2 15s linear infinite}
+@keyframes snowFall{from{transform:translateY(0)}to{transform:translateY(240px)}}
+@keyframes snowFall2{from{transform:translate(0,0)}to{transform:translate(0,180px)}}
+@media (prefers-reduced-motion:reduce){html[data-theme="xmas"] #home::before,html[data-theme="xmas"] #home::after{animation:none}}
+/* colour picker: labelled groups, 2 columns each */
+#themeSeg .flabel{margin:12px 0 6px;font-size:15px;letter-spacing:.06em}#themeSeg .flabel:first-child{margin-top:2px}
+#themeSeg .tgrp{display:grid;grid-template-columns:1fr 1fr}#themeSeg button{border-right:none;border-bottom:2px solid var(--black);font-size:clamp(17px,5vw,24px);line-height:1.1;padding:10px 4px 12px}
+#themeSeg button:nth-child(odd){border-right:2px solid var(--black)}#themeSeg button:last-child,#themeSeg button:nth-last-child(2):nth-child(odd){border-bottom:none}
+#themeSeg button:last-child:nth-child(odd){grid-column:1/3;border-right:none}
 </style>
 </head>
 <body>
@@ -742,7 +781,7 @@ html[data-theme="retro"] .ol{letter-spacing:.04em}
 
 
   <div class="hbody hidden" id="vSettings">
-    <div class="gcard"><div class="glabel">Colours</div><div class="seg2" id="themeSeg"><button data-v="blues">Blues</button><button data-v="villa">Villans</button><button data-v="chalk">Chalk</button><button data-v="neon">Neon</button><button data-v="irish">Irish</button><button data-v="coral">Coral Coast</button><button data-v="lime">Lime</button><button data-v="snake">Snakeskin</button><button data-v="bling">Bling</button><button data-v="dutch">Dutch Orange</button><button data-v="ice">Iceman</button><button data-v="pink">Pink Palace</button><button data-v="tartan">Tartan</button><button data-v="retro">Retro 80s</button></div></div>
+    <div class="gcard"><div class="glabel">Colours</div><div id="themeSeg"><div class="flabel">Teams</div><div class="seg2 tgrp"><button data-v="blues">Blues</button><button data-v="villa">Villans</button><button data-v="irish">Irish</button></div><div class="flabel">Styles</div><div class="seg2 tgrp"><button data-v="chalk">Chalk</button><button data-v="neon">Neon</button><button data-v="coral">Coral Coast</button></div><div class="flabel">Players</div><div class="seg2 tgrp"><button data-v="lime">Lime</button><button data-v="snake">Snakeskin</button><button data-v="bling">Bling</button><button data-v="dutch">Dutch Orange</button><button data-v="ice">Iceman</button><button data-v="pink">Pink Palace</button><button data-v="tartan">Tartan</button><button data-v="retro">Retro 80s</button></div><div class="flabel">Venues</div><div class="seg2 tgrp"><button data-v="oche">Oche Classic</button><button data-v="pally">Ally Pally</button><button data-v="baize">Snooker Hall</button></div><div class="flabel">Retro and fun</div><div class="seg2 tgrp"><button data-v="arcade">Arcade</button><button data-v="ceefax">Teletext</button><button data-v="vapor">Vaporwave</button><button data-v="xmas">Christmas</button></div></div></div>
     <div class="gcard">
       <div class="glabel">Caller</div>
       <div class="lrow"><span>Caller voice<small>scores and finishes read out</small></span><button class="tog" id="voiceToggle" aria-label="Caller voice"></button></div>
@@ -1794,7 +1833,7 @@ function tvNextCall(){const el=$('#tvCall'),t=TVS.calls.shift();if(t==null){el.c
    Every few minutes (and when the app comes back to the front) it reads the small version.json published next to
    the app. If a newer version is live it shows a banner that reloads into it. It waits until you're off the game
    screen so it never covers the keypad; a game in progress is saved and can be resumed. */
-const APP_VERSION='2.12',APP_DATE='28 Nov 2026';
+const APP_VERSION='2.13',APP_DATE='28 Nov 2026';
 const verNum=v=>String(v||'').split('.').map(n=>parseInt(n)||0);
 const verNewer=(a,b)=>{const x=verNum(a),y=verNum(b);for(let i=0;i<Math.max(x.length,y.length);i++){if((x[i]||0)!==(y[i]||0))return(x[i]||0)>(y[i]||0)}return false};
 let updVer=null,updLast=0;
@@ -2835,7 +2874,7 @@ renderMusic();
 
 /* ================= COLOUR SCHEMES ================= */
 const THEME={cur:store.get('dartsapp.theme','blues')};
-function applyTheme(t){t=({'green': 'lime'})[t]||t;THEME.cur=['villa','chalk','neon','irish','coral','lime','snake','bling','dutch','ice','pink','tartan','retro'].includes(t)?t:'blues';document.documentElement.dataset.theme=THEME.cur;store.set('dartsapp.theme',THEME.cur);const m=document.querySelector('meta[name=theme-color]');if(m)m.content=TC('black');$$('#themeSeg button').forEach(b=>b.classList.toggle('on',b.dataset.v===THEME.cur));try{if(typeof renderStats==='function'&&!$('#vStats').classList.contains('hidden'))renderStats()}catch(e){}}
+function applyTheme(t){t=({'green': 'lime'})[t]||t;THEME.cur=['villa','chalk','neon','irish','coral','lime','snake','bling','dutch','ice','pink','tartan','retro','oche','pally','baize','arcade','ceefax','vapor','xmas'].includes(t)?t:'blues';document.documentElement.dataset.theme=THEME.cur;store.set('dartsapp.theme',THEME.cur);const m=document.querySelector('meta[name=theme-color]');if(m)m.content=TC('black');$$('#themeSeg button').forEach(b=>b.classList.toggle('on',b.dataset.v===THEME.cur));try{if(typeof renderStats==='function'&&!$('#vStats').classList.contains('hidden'))renderStats()}catch(e){}}
 $$('#themeSeg button').forEach(b=>b.onclick=()=>applyTheme(b.dataset.v));
 applyTheme(THEME.cur);
 
