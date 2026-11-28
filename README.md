@@ -29,13 +29,14 @@ What it does
 	•	Checkout guide for 170 and under, plus a full checkout chart.
 	•	Scoring: tap the keypad, tap the dartboard, or use a camera.
 	•	Caller voice with a choice of voices and a volume control.
-	•	Six colour schemes: switch under Colours in Settings (the gear).
+	•	Fourteen colour schemes: switch under Colours in Settings (the gear).
 	•	Blues: royal blue #003798 / #0000FF and white
 	•	Villans: claret #670E36, sky blue #95BFE5, yellow #FEE505 and white
-	•	Chalk: chalk on a blackboard (board green, chalk white and chalk yellow, sketchy chalk lettering)
+	•	Chalk: chalk on a blackboard, with sketchy chalk lettering
 	•	Neon: neon yellow #E6FF00 / #FFF000, electric purple #6A0DAD / #551A8B and deep black #111111
-	•	Green Machine: British racing green #004225, green-cyan #008566 and bright neon green #00FF00
 	•	Irish: green #169B62, white #FFFFFF and orange #FF883E
+	•	Coral Coast (inspired by GTA VI): coral #FF4F7A, electric violet #8B3DFF, deep lagoon #0F6B8A, tangerine #FF8A5B and mulberry #7A4F7D, with a sunset sky
+	•	Inspired by famous players' looks: Lime (Michael van Gerwen), Snakeskin (Peter Wright, with snake scales and rainbow doubles), Bling (Bobby George, gold shimmer and a crown), Dutch Orange (Raymond van Barneveld), Iceman (Gerwyn Price, frosted ice), Pink Palace (Fallon Sherrock), Tartan (Jocky Wilson and Gary Anderson) and Retro 80s (Eric Bristow, scoreboard lettering)
 
 Works offline: once opened with internet, the app keeps a copy and plays without Wi-Fi.
 
