@@ -35,4 +35,4 @@ What it does
 
 Works offline: once opened with internet, the app keeps a copy and plays without Wi-Fi.
 
-Stats are saved in the browser on each device. Back up stats in Settings (the gear tab, which also has the colours, caller, TV link and scoring options) (a gentle reminder appears about once a month). They don't sync between devices, and clearing Safari's website data deletes them.
+Stats are saved in the browser on each device. Link nicknames (e.g. Dad, Daddy, Dr Mark as Mark) in Settings so all their games count together. Back up stats in Settings (the gear tab, which also has the colours, caller, TV link and scoring options) (a gentle reminder appears about once a month). They don't sync between devices, and clearing Safari's website data deletes them.
