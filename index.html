@@ -16,12 +16,14 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Cabin+Sketch:wght@700&family=Zilla+Slab:wght@500;600;700&display=swap" rel="stylesheet">
-<script>try{var t=JSON.parse(localStorage.getItem("dartsapp.theme"));if(["villa","chalk","neon"].indexOf(t)>=0)document.documentElement.dataset.theme=t}catch(e){}</script>
+<script>try{var t=JSON.parse(localStorage.getItem("dartsapp.theme"));if(["villa", "chalk", "neon", "green", "irish"].indexOf(t)>=0)document.documentElement.dataset.theme=t}catch(e){}</script>
 <style>
 :root{--red:#003798;--red2:#002A75;--red3:#001E55;--gold:#FFFFFF;--goldl:#A8C1FF;--goldd:#7F9BD6;--black:#00163D;--char:#08214F;--char2:#0E2C63;--cream:#FFFFFF;--cream2:#E6EDFA;--ink:#00163D;--mute:#5F79A8;--rule:#C9D6EE;--sub1:#A9BBDD;--sub2:#93A7CC;--sub3:#BFCDE8;--olin:#0000FF;--dbl:#C2D3FF;--treb:#8FB0FF;--gold-rgb:255,255,255;--black-rgb:0,22,61;--goldl-rgb:168,193,255}
 html[data-theme="villa"]{--red:#670E36;--red2:#510B2B;--red3:#3B0820;--gold:#95BFE5;--goldl:#FEE505;--goldd:#6F98C0;--black:#24061A;--char:#330A24;--char2:#430E2F;--cream:#FFFFFF;--cream2:#F3E9EE;--ink:#24061A;--mute:#8A5F76;--rule:#E3CFD9;--sub1:#CDB0BF;--sub2:#B894A7;--sub3:#DCC4D0;--olin:#FEE505;--dbl:#95BFE5;--treb:#FEE505;--gold-rgb:149,191,229;--black-rgb:36,6,26;--goldl-rgb:254,229,5}
-html[data-theme="chalk"]{--red:#2F4A3C;--red2:#263D31;--red3:#1D3026;--gold:#EEECE2;--goldl:#F3E38B;--goldd:#A7B2A4;--black:#1B2520;--char:#222E27;--char2:#2C3A32;--cream:#ECEAE0;--cream2:#DEDCD0;--ink:#1B2520;--mute:#6B776E;--rule:#C9CCC0;--sub1:#B4BAAE;--sub2:#9EA69A;--sub3:#C2C7BB;--olin:#1B2520;--dbl:#F3E38B;--treb:#F3E38B;--gold-rgb:238,236,226;--black-rgb:27,37,32;--goldl-rgb:243,227,139;--fd:"Cabin Sketch","Alfa Slab One",Rockwell,Georgia,serif}
+html[data-theme="chalk"]{--red:#2F4A3C;--red2:#263D31;--red3:#1D3026;--gold:#EEECE2;--goldl:#F3E38B;--goldd:#A7B2A4;--black:#1B2520;--char:#222E27;--char2:#2C3A32;--cream:#ECEAE0;--cream2:#DEDCD0;--ink:#1B2520;--mute:#6B776E;--rule:#C9CCC0;--sub1:#B4BAAE;--sub2:#9EA69A;--sub3:#C2C7BB;--olin:#1B2520;--dbl:#F3E38B;--treb:#F3E38B;--gold-rgb:238,236,226;--black-rgb:27,37,32;--goldl-rgb:243,227,139}
 html[data-theme="neon"]{--red:#6A0DAD;--red2:#551A8B;--red3:#3D1266;--gold:#E6FF00;--goldl:#FFF000;--goldd:#9DB000;--black:#111111;--char:#1A1A1A;--char2:#242424;--cream:#FFFFFF;--cream2:#EFE6FA;--ink:#111111;--mute:#7A5A9A;--rule:#DCCDEE;--sub1:#C3AEDD;--sub2:#AD94CC;--sub3:#D2C1E8;--olin:#551A8B;--dbl:#E6FF00;--treb:#FFF000;--gold-rgb:230,255,0;--black-rgb:17,17,17;--goldl-rgb:255,240,0}
+html[data-theme="green"]{--red:#004225;--red2:#00351E;--red3:#002816;--gold:#00FF00;--goldl:#00FF00;--goldd:#008566;--black:#00170D;--char:#00211A;--char2:#002C22;--cream:#FFFFFF;--cream2:#E2F2EB;--ink:#00170D;--mute:#3F7564;--rule:#C4DDD3;--sub1:#A3C5B8;--sub2:#8BB3A3;--sub3:#B7D2C7;--olin:#004225;--dbl:#00FF00;--treb:#00FF00;--gold-rgb:0,255,0;--black-rgb:0,23,13;--goldl-rgb:0,255,0}
+html[data-theme="irish"]{--red:#169B62;--red2:#117A4D;--red3:#0D5E3B;--gold:#FFFFFF;--goldl:#FF883E;--goldd:#74A88C;--black:#0B3D26;--char:#0F4A2F;--char2:#145838;--cream:#FFFFFF;--cream2:#E6F4EC;--ink:#0B3D26;--mute:#4F7F68;--rule:#CFE3D8;--sub1:#AFCFBE;--sub2:#97BFAA;--sub3:#C3DCCE;--olin:#FF883E;--dbl:#FF883E;--treb:#FF883E;--gold-rgb:255,255,255;--black-rgb:11,61,38;--goldl-rgb:255,136,62}
 :root{
   --fd:"Alfa Slab One",Rockwell,"American Typewriter",Georgia,serif;
   --ft:"Zilla Slab",Rockwell,"American Typewriter",Georgia,serif;
@@ -576,12 +578,16 @@ html.tvm body>*:not(#tv):not(script){display:none!important}
 .sndset summary{color:var(--red)}
 
 /* chalk: dusty board, smudges and chalk lettering */
+html[data-theme="chalk"]{--fd:"Cabin Sketch","Alfa Slab One",Rockwell,Georgia,serif}
 html[data-theme="chalk"],html[data-theme="chalk"] body{background:radial-gradient(ellipse at 20% 15%,rgba(255,255,255,.07),transparent 55%),radial-gradient(ellipse at 80% 70%,rgba(255,255,255,.05),transparent 50%),var(--black)}
 html[data-theme="chalk"] .ol{letter-spacing:.02em}
-/* neon: glowing lettering */
+/* neon and green machine: glowing lettering */
 html[data-theme="neon"] .ol{filter:drop-shadow(0 0 6px rgba(230,255,0,.65))}
 html[data-theme="neon"] .cta,html[data-theme="neon"] .seg2 button.on{box-shadow:0 0 10px rgba(230,255,0,.35)}
-#themeSeg{display:grid;grid-template-columns:1fr 1fr}#themeSeg button{border-right:none}#themeSeg button:nth-child(odd){border-right:2px solid var(--black)}#themeSeg button:nth-child(-n+2){border-bottom:2px solid var(--black)}
+html[data-theme="green"] .ol{filter:drop-shadow(0 0 6px rgba(0,255,0,.6))}
+html[data-theme="green"] .cta,html[data-theme="green"] .seg2 button.on{box-shadow:0 0 10px rgba(0,255,0,.35)}
+/* colour picker: 2 columns */
+#themeSeg{display:grid;grid-template-columns:1fr 1fr}#themeSeg button{border-right:none;font-size:clamp(17px,5vw,24px);line-height:1.1;padding:10px 4px 12px}#themeSeg button:nth-child(odd){border-right:2px solid var(--black)}#themeSeg button:nth-child(-n+4){border-bottom:2px solid var(--black)}
 </style>
 </head>
 <body>
@@ -706,7 +712,7 @@ html[data-theme="neon"] .cta,html[data-theme="neon"] .seg2 button.on{box-shadow:
 
 
   <div class="hbody hidden" id="vSettings">
-    <div class="gcard"><div class="glabel">Colours</div><div class="seg2" id="themeSeg"><button data-v="blues">Blues</button><button data-v="villa">Villans</button><button data-v="chalk">Chalk</button><button data-v="neon">Neon</button></div></div>
+    <div class="gcard"><div class="glabel">Colours</div><div class="seg2" id="themeSeg"><button data-v="blues">Blues</button><button data-v="villa">Villans</button><button data-v="chalk">Chalk</button><button data-v="neon">Neon</button><button data-v="green">Green Machine</button><button data-v="irish">Irish</button></div></div>
     <div class="gcard">
       <div class="glabel">Caller</div>
       <div class="lrow"><span>Caller voice<small>scores and finishes read out</small></span><button class="tog" id="voiceToggle" aria-label="Caller voice"></button></div>
@@ -1758,7 +1764,7 @@ function tvNextCall(){const el=$('#tvCall'),t=TVS.calls.shift();if(t==null){el.c
    Every few minutes (and when the app comes back to the front) it reads the small version.json published next to
    the app. If a newer version is live it shows a banner that reloads into it. It waits until you're off the game
    screen so it never covers the keypad; a game in progress is saved and can be resumed. */
-const APP_VERSION='2.10',APP_DATE='28 Nov 2026';
+const APP_VERSION='2.11',APP_DATE='28 Nov 2026';
 const verNum=v=>String(v||'').split('.').map(n=>parseInt(n)||0);
 const verNewer=(a,b)=>{const x=verNum(a),y=verNum(b);for(let i=0;i<Math.max(x.length,y.length);i++){if((x[i]||0)!==(y[i]||0))return(x[i]||0)>(y[i]||0)}return false};
 let updVer=null,updLast=0;
@@ -2799,7 +2805,7 @@ renderMusic();
 
 /* ================= COLOUR SCHEMES ================= */
 const THEME={cur:store.get('dartsapp.theme','blues')};
-function applyTheme(t){THEME.cur=['villa','chalk','neon'].includes(t)?t:'blues';document.documentElement.dataset.theme=THEME.cur;store.set('dartsapp.theme',THEME.cur);const m=document.querySelector('meta[name=theme-color]');if(m)m.content=TC('black');$$('#themeSeg button').forEach(b=>b.classList.toggle('on',b.dataset.v===THEME.cur));try{if(typeof renderStats==='function'&&!$('#vStats').classList.contains('hidden'))renderStats()}catch(e){}}
+function applyTheme(t){THEME.cur=['villa', 'chalk', 'neon', 'green', 'irish'].includes(t)?t:'blues';document.documentElement.dataset.theme=THEME.cur;store.set('dartsapp.theme',THEME.cur);const m=document.querySelector('meta[name=theme-color]');if(m)m.content=TC('black');$$('#themeSeg button').forEach(b=>b.classList.toggle('on',b.dataset.v===THEME.cur));try{if(typeof renderStats==='function'&&!$('#vStats').classList.contains('hidden'))renderStats()}catch(e){}}
 $$('#themeSeg button').forEach(b=>b.onclick=()=>applyTheme(b.dataset.v));
 applyTheme(THEME.cur);
 
