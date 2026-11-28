@@ -29,9 +29,11 @@ What it does
 	•	Checkout guide for 170 and under, plus a full checkout chart.
 	•	Scoring: tap the keypad, tap the dartboard, or use a camera.
 	•	Caller voice with a choice of voices and a volume control.
-	•	Two colour schemes: switch under Colours on the Play tab.
+	•	Four colour schemes: switch under Colours in Settings (the gear).
 	•	Blues: royal blue #003798 / #0000FF and white
 	•	Villans: claret #670E36, sky blue #95BFE5, yellow #FEE505 and white
+	•	Chalk: chalk on a blackboard (board green, chalk white and chalk yellow, sketchy chalk lettering)
+	•	Neon: neon yellow #E6FF00 / #FFF000, electric purple #6A0DAD / #551A8B and deep black #111111
 
 Works offline: once opened with internet, the app keeps a copy and plays without Wi-Fi.
 
